@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://simwiki.github.io/about/index.html</loc>
+    
+    <lastmod>2021-03-23</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://simwiki.github.io/2021/03/22/ClickHouse/</loc>
     
     <lastmod>2021-03-23</lastmod>
@@ -57,13 +64,6 @@
     
   </url>
   
-  <url>
-    <loc>http://simwiki.github.io/about/index.html</loc>
-    
-    <lastmod>2021-03-18</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>http://simwiki.github.io/</loc>
@@ -81,7 +81,7 @@
   </url>
   
   <url>
-    <loc>http://simwiki.github.io/tags/recommend/</loc>
+    <loc>http://simwiki.github.io/tags/shell/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -95,7 +95,7 @@
   </url>
   
   <url>
-    <loc>http://simwiki.github.io/tags/shell/</loc>
+    <loc>http://simwiki.github.io/tags/recommend/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -118,7 +118,7 @@
   </url>
   
   <url>
-    <loc>http://simwiki.github.io/categories/recommend-system/</loc>
+    <loc>http://simwiki.github.io/categories/linux/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -132,7 +132,7 @@
   </url>
   
   <url>
-    <loc>http://simwiki.github.io/categories/linux/</loc>
+    <loc>http://simwiki.github.io/categories/recommend-system/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
