@@ -1317,7 +1317,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c361e9;
+  background: #fffff1;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2642,4 +2642,17 @@ hr {
 }
 .sub-menu .menu-item {
   display: inline-block;
+}
+body {
+  background: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+body .main-inner {
+  background: #f0f8ff;
+  padding: 66px;
+  opacity: 0.85;
+  border-radius: 20px;
 }

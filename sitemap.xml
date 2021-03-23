@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://simwiki.github.io/2021/03/18/Recommend%20System/</loc>
+    
+    <lastmod>2021-03-23</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://simwiki.github.io/master/index.html</loc>
     
     <lastmod>2021-03-23</lastmod>
@@ -45,13 +52,6 @@
   
   <url>
     <loc>http://simwiki.github.io/2021/03/12/Linux/</loc>
-    
-    <lastmod>2021-03-18</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://simwiki.github.io/2021/03/18/Recommend%20System/</loc>
     
     <lastmod>2021-03-18</lastmod>
     
@@ -102,13 +102,6 @@
   </url>
   
   <url>
-    <loc>http://simwiki.github.io/tags/git/</loc>
-    <lastmod>2021-03-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://simwiki.github.io/tags/tutorial/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
@@ -124,6 +117,13 @@
   
   <url>
     <loc>http://simwiki.github.io/tags/vim/</loc>
+    <lastmod>2021-03-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://simwiki.github.io/tags/git/</loc>
     <lastmod>2021-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
