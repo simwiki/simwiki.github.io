@@ -42,6 +42,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux</title>
+    <url>/2021/03/12/Linux/</url>
+    <content><![CDATA[<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><span id="more"></span>
+
+<ul>
+<li><p>磁盘空间</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看系统整体磁盘使用情况</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前文件夹不同文件（夹）的使用情况</span></span><br><span class="line">du -sh *</span><br></pre></td></tr></table></figure></li>
+<li><p>crontab</p>
+<blockquote>
+<p>CentOS上配置cron任务时，应先cd到对应路径，再执行sh文件。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># clean docker &amp; fetch data &amp; train model every 12 hours</span></span><br><span class="line">22 */12 * * * <span class="built_in">cd</span> /home/nice/brain/workspace/wangxinke/recommender/ &amp;&amp; sh ./pipeline.sh</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> -e	<span class="comment"># fail and exit on any command erroring</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you know you are deleting files, you can check if it a file and then delete.</span></span><br><span class="line"><span class="built_in">test</span> -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span> &amp;&amp; rm -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 传输mac下的hotlive文件夹至dev01下的data文件夹下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以下命令是在dev01服务器上执行的</span></span><br><span class="line">sudo scp -r xk_wang@192.168.72.229:/Users/xk_wang/Desktop/recommender/data/hotlive data/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用wget + http.server的方式传输文件</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><ul>
+<li>递归更改某目录下的文件和文件夹权限为最高权限</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod -R 777 log/hotlive/20210303/</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【Git】日常使用记录</title>
     <url>/2021/03/23/Git%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><blockquote>
@@ -153,37 +184,6 @@
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux</title>
-    <url>/2021/03/12/Linux/</url>
-    <content><![CDATA[<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><span id="more"></span>
-
-<ul>
-<li><p>磁盘空间</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看系统整体磁盘使用情况</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前文件夹不同文件（夹）的使用情况</span></span><br><span class="line">du -sh *</span><br></pre></td></tr></table></figure></li>
-<li><p>crontab</p>
-<blockquote>
-<p>CentOS上配置cron任务时，应先cd到对应路径，再执行sh文件。</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># clean docker &amp; fetch data &amp; train model every 12 hours</span></span><br><span class="line">22 */12 * * * <span class="built_in">cd</span> /home/nice/brain/workspace/wangxinke/recommender/ &amp;&amp; sh ./pipeline.sh</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> -e	<span class="comment"># fail and exit on any command erroring</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you know you are deleting files, you can check if it a file and then delete.</span></span><br><span class="line"><span class="built_in">test</span> -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span> &amp;&amp; rm -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 传输mac下的hotlive文件夹至dev01下的data文件夹下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以下命令是在dev01服务器上执行的</span></span><br><span class="line">sudo scp -r xk_wang@192.168.72.229:/Users/xk_wang/Desktop/recommender/data/hotlive data/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用wget + http.server的方式传输文件</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><ul>
-<li>递归更改某目录下的文件和文件夹权限为最高权限</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod -R 777 log/hotlive/20210303/</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
