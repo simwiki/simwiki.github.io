@@ -42,37 +42,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux常用命令记录</title>
-    <url>/2021/03/12/Linux/</url>
-    <content><![CDATA[<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><span id="more"></span>
-
-<ul>
-<li><p>磁盘空间</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看系统整体磁盘使用情况</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前文件夹不同文件（夹）的使用情况</span></span><br><span class="line">du -sh *</span><br></pre></td></tr></table></figure></li>
-<li><p>crontab</p>
-<blockquote>
-<p>CentOS上配置cron任务时，应先cd到对应路径，再执行sh文件。</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># clean docker &amp; fetch data &amp; train model every 12 hours</span></span><br><span class="line">22 */12 * * * <span class="built_in">cd</span> /home/nice/brain/workspace/wangxinke/recommender/ &amp;&amp; sh ./pipeline.sh</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> -e	<span class="comment"># fail and exit on any command erroring</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you know you are deleting files, you can check if it a file and then delete.</span></span><br><span class="line"><span class="built_in">test</span> -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span> &amp;&amp; rm -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 传输mac下的hotlive文件夹至dev01下的data文件夹下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以下命令是在dev01服务器上执行的</span></span><br><span class="line">sudo scp -r xk_wang@192.168.72.229:/Users/xk_wang/Desktop/recommender/data/hotlive data/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用wget + http.server的方式传输文件</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><ul>
-<li>递归更改某目录下的文件和文件夹权限为最高权限</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod -R 777 log/hotlive/20210303/</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git日常使用记录</title>
     <url>/2021/03/23/Git%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><blockquote>
@@ -187,6 +156,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux常用命令记录</title>
+    <url>/2021/03/12/Linux/</url>
+    <content><![CDATA[<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><span id="more"></span>
+
+<ul>
+<li><p>磁盘空间</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看系统整体磁盘使用情况</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前文件夹不同文件（夹）的使用情况</span></span><br><span class="line">du -sh *</span><br></pre></td></tr></table></figure></li>
+<li><p>crontab</p>
+<blockquote>
+<p>CentOS上配置cron任务时，应先cd到对应路径，再执行sh文件。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># clean docker &amp; fetch data &amp; train model every 12 hours</span></span><br><span class="line">22 */12 * * * <span class="built_in">cd</span> /home/nice/brain/workspace/wangxinke/recommender/ &amp;&amp; sh ./pipeline.sh</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> -e	<span class="comment"># fail and exit on any command erroring</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you know you are deleting files, you can check if it a file and then delete.</span></span><br><span class="line"><span class="built_in">test</span> -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span> &amp;&amp; rm -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 传输mac下的hotlive文件夹至dev01下的data文件夹下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以下命令是在dev01服务器上执行的</span></span><br><span class="line">sudo scp -r xk_wang@192.168.72.229:/Users/xk_wang/Desktop/recommender/data/hotlive data/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用wget + http.server的方式传输文件</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><ul>
+<li>递归更改某目录下的文件和文件夹权限为最高权限</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod -R 777 log/hotlive/20210303/</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Next主题添加背景音乐</title>
     <url>/2021/03/24/NexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/</url>
     <content><![CDATA[<h1 id="背景音乐"><a href="#背景音乐" class="headerlink" title="背景音乐"></a>背景音乐</h1><p>博客页侧边栏和个人页面配置不同的背景音乐，效果如下图所示。<span id="more"></span></p>
@@ -225,27 +225,286 @@
       </tags>
   </entry>
   <entry>
-    <title>PicGo图床同步Typora图片至GitHub</title>
-    <url>/2021/03/18/PicGo%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h1><span id="more"></span>
-
-<h2 id="1-创建一个新的GitHUb仓库"><a href="#1-创建一个新的GitHUb仓库" class="headerlink" title="1.创建一个新的GitHUb仓库"></a>1.创建一个新的GitHUb仓库</h2><ul>
-<li><p>注意仓库需是Public</p>
-<p><img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315202712610.png" alt="image-20210315202712610"></p>
+    <title>Cheat Sheet for Tech Basics</title>
+    <url>/2021/03/25/Cheat_Sheet_for_Tech_Basics/</url>
+    <content><![CDATA[<h1 id="Cheat-Sheet-to-Help"><a href="#Cheat-Sheet-to-Help" class="headerlink" title="Cheat Sheet to Help"></a>Cheat Sheet to Help</h1><blockquote>
+<p><a href="https://github.com/stefan-jansen/python-algorithms/blob/master/The%20Technical%20Interview%20Cheat%20Sheet.md">Reference</a></p>
+</blockquote>
+<p>This list is meant to be a both a quick guide <span id="more"></span>and reference for further research into these topics.<br>It’s basically a summary of that  comp sci course you never took or forgot about, so there’s no way it can cover everything in depth.</p>
+<h2 id="Data-Structure-Basics"><a href="#Data-Structure-Basics" class="headerlink" title="Data Structure Basics"></a>Data Structure Basics</h2><h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a><strong>Array</strong></h3><h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>Stores data elements based on an sequential, most commonly 0 based, index.</li>
+<li>Based on <a href="http://en.wikipedia.org/wiki/Tuple">tuples</a> from set theory.</li>
+<li>They are one of the oldest, most commonly used data structures.  </li>
+</ul>
+<h4 id="What-you-need-to-know"><a href="#What-you-need-to-know" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>Optimal for indexing; bad at searching, inserting, and deleting (except at the end).</li>
+<li><strong>Linear arrays</strong>, or one dimensional arrays, are the most basic.<ul>
+<li>Are static in size, meaning that they are declared with a fixed size.</li>
+</ul>
+</li>
+<li><strong>Dynamic arrays</strong> are like one dimensional arrays, but have reserved space for additional elements.<ul>
+<li>If a dynamic array is full, it copies it’s contents to a larger array.</li>
+</ul>
+</li>
+<li><strong>Two dimensional arrays</strong> have x and y indices like a grid or nested arrays.  </li>
+</ul>
+<h4 id="Big-O-efficiency"><a href="#Big-O-efficiency" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Indexing:         Linear array: O(1),      Dynamic array: O(1)</li>
+<li>Search:           Linear array: O(n),      Dynamic array: O(n)</li>
+<li>Optimized Search: Linear array: O(log n), Dynamic array: O(log n)</li>
+<li>Insertion:        Linear array: n/a        Dynamic array: O(n)</li>
+</ul>
+<h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a><strong>Linked List</strong></h3><h4 id="Definition-1"><a href="#Definition-1" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>Stores data with <strong>nodes</strong> that point to other nodes.<ul>
+<li>Nodes, at its most basic it has one datum and one reference (another node).</li>
+<li>A linked list <em>chains</em> nodes together by pointing one node’s reference towards another node.  </li>
+</ul>
 </li>
 </ul>
-<h2 id="2-生成token"><a href="#2-生成token" class="headerlink" title="2.生成token:"></a>2.生成token:</h2><p>  <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315203012043.png" alt="image-20210315203012043"></p>
-<p>  <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315203335536.png" alt="image-20210315203335536"></p>
-<h2 id="3-配置PicGo"><a href="#3-配置PicGo" class="headerlink" title="3.配置PicGo"></a>3.配置PicGo</h2><p>  <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315204803300.png" alt="image-20210315204803300"></p>
-<h2 id="4-PicoGO同步失败注意事项"><a href="#4-PicoGO同步失败注意事项" class="headerlink" title="4.PicoGO同步失败注意事项"></a>4.PicoGO同步失败注意事项</h2><ul>
-<li>图片名设置<br>开启时间戳命名，否则重名图片上传会失败<br><img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk4MjIzOA==,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></li>
+<h4 id="What-you-need-to-know-1"><a href="#What-you-need-to-know-1" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>Designed to optimize insertion and deletion, slow at indexing and searching.</li>
+<li><strong>Doubly linked list</strong> has nodes that reference the previous node.</li>
+<li><strong>Circularly linked list</strong> is simple linked list whose <strong>tail</strong>, the last node, references the <strong>head</strong>, the first node.</li>
+<li><strong>Stack</strong>, commonly implemented with linked lists but can be made from arrays too.<ul>
+<li>Stacks are <strong>last in, first out</strong> (LIFO) data structures.</li>
+<li>Made with a linked list by having the head be the only place for insertion and removal.</li>
 </ul>
+</li>
+<li><strong>Queues</strong>, too can be implemented with a linked list or an array.<ul>
+<li>Queues are a <strong>first in, first out</strong> (FIFO) data structure.</li>
+<li>Made with a doubly linked list that only removes from head and adds to tail.  </li>
+</ul>
+</li>
+</ul>
+<h4 id="Big-O-efficiency-1"><a href="#Big-O-efficiency-1" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Indexing:         Linked Lists: O(n)</li>
+<li>Search:           Linked Lists: O(n)</li>
+<li>Optimized Search: Linked Lists: O(n)</li>
+<li>Insertion:        Linked Lists: O(1)  </li>
+</ul>
+<h3 id="Hash-Table-or-Hash-Map"><a href="#Hash-Table-or-Hash-Map" class="headerlink" title="Hash Table or Hash Map"></a><strong>Hash Table or Hash Map</strong></h3><h4 id="Definition-2"><a href="#Definition-2" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>Stores data with key value pairs.</li>
+<li><strong>Hash functions</strong> accept a key and return an output unique only to that specific key. <ul>
+<li>This is known as <strong>hashing</strong>, which is the concept that an input and an output have a one-to-one correspondence to map information.</li>
+<li>Hash functions return a unique address in memory for that data.</li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-2"><a href="#What-you-need-to-know-2" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>Designed to optimize searching, insertion, and deletion.</li>
+<li><strong>Hash collisions</strong> are when a hash function returns the same output for two distinct outputs.<ul>
+<li>All hash functions have this problem.</li>
+<li>This is often accommodated for by having the hash tables be very large.</li>
+</ul>
+</li>
+<li>Hashes are important for associative arrays and database indexing.</li>
+</ul>
+<h4 id="Big-O-efficiency-2"><a href="#Big-O-efficiency-2" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Indexing:         Hash Tables: O(1)</li>
+<li>Search:           Hash Tables: O(1)</li>
+<li>Insertion:        Hash Tables: O(1)  </li>
+</ul>
+<h3 id="Binary-Tree"><a href="#Binary-Tree" class="headerlink" title="Binary Tree"></a><strong>Binary Tree</strong></h3><h4 id="Definition-3"><a href="#Definition-3" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>Is a tree like data structure where every node has at most two children.<ul>
+<li>There is one left and right child node.</li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-3"><a href="#What-you-need-to-know-3" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>Designed to optimize searching and sorting.</li>
+<li>A <strong>degenerate tree</strong> is an unbalanced tree, which if entirely one-sided is a essentially a linked list.</li>
+<li>They are comparably simple to implement than other data structures.</li>
+<li>Used to make <strong>binary search trees</strong>.<ul>
+<li>A binary tree that uses comparable keys to assign which direction a child is.</li>
+<li>Left child has a key smaller than it’s parent node.</li>
+<li>Right child has a key greater than it’s parent node.</li>
+<li>There can be no duplicate node.</li>
+<li>Because of the above it is more likely to be used as a data structure than a binary tree.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Big-O-efficiency-3"><a href="#Big-O-efficiency-3" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Indexing:  Binary Search Tree: O(log n)</li>
+<li>Search:    Binary Search Tree: O(log n)</li>
+<li>Insertion: Binary Search Tree: O(log n) </li>
+</ul>
+<h2 id="Search-Basics"><a href="#Search-Basics" class="headerlink" title="Search Basics"></a>Search Basics</h2><h3 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth First Search"></a><strong>Breadth First Search</strong></h3><h4 id="Definition-4"><a href="#Definition-4" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>An algorithm that searches a tree (or graph) by searching levels of the tree first, starting at the root.<ul>
+<li>It finds every node on the same level, most often moving left to right. </li>
+<li>While doing this it tracks the children nodes of the nodes on the current level.</li>
+<li>When finished examining a level it moves to the left most node on the next level.</li>
+<li>The bottom-right most node is evaluated last (the node that is deepest and is farthest right of it’s level). </li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-4"><a href="#What-you-need-to-know-4" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>Optimal for searching a tree that is wider than it is deep.</li>
+<li>Uses a queue to store information about the tree while it traverses a tree.<ul>
+<li>Because it uses a queue it is more memory intensive than <strong>depth first search</strong>.</li>
+<li>The queue uses more memory because it needs to stores pointers</li>
+</ul>
+</li>
+</ul>
+<h4 id="Big-O-efficiency-4"><a href="#Big-O-efficiency-4" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Search: Breadth First Search: O(|E| + |V|)</li>
+<li>E is number of edges</li>
+<li>V is number of vertices</li>
+</ul>
+<h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a><strong>Depth First Search</strong></h3><h4 id="Definition-5"><a href="#Definition-5" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>An algorithm that searches a tree (or graph) by searching depth of the tree first, starting at the root.<ul>
+<li>It traverses left down a tree until it cannot go further.</li>
+<li>Once it reaches the end of a branch it traverses back up trying the right child of nodes on that branch, and if possible left from the right children.</li>
+<li>When finished examining a branch it moves to the node right of the root then tries to go left on all it’s children until it reaches the bottom.</li>
+<li>The right most node is evaluated last (the node that is right of all it’s ancestors). </li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-5"><a href="#What-you-need-to-know-5" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>Optimal for searching a tree that is deeper than it is wide.</li>
+<li>Uses a stack to push nodes onto.<ul>
+<li>Because a stack is LIFO it does not need to keep track of the nodes pointers and is therefore less memory intensive than breadth first search.</li>
+<li>Once it cannot go further left it begins evaluating the stack.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Big-O-efficiency-5"><a href="#Big-O-efficiency-5" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Search: Depth First Search: O(|E| + |V|)</li>
+<li>E is number of edges</li>
+<li>V is number of vertices</li>
+</ul>
+<h4 id="Breadth-First-Search-Vs-Depth-First-Search"><a href="#Breadth-First-Search-Vs-Depth-First-Search" class="headerlink" title="Breadth First Search Vs. Depth First Search"></a>Breadth First Search Vs. Depth First Search</h4><ul>
+<li>The simple answer to this question is that it depends on the size and shape of the tree.<ul>
+<li>For wide, shallow trees use Breadth First Search</li>
+<li>For deep, narrow trees use Depth First Search</li>
+</ul>
+</li>
+</ul>
+<h4 id="Nuances"><a href="#Nuances" class="headerlink" title="Nuances:"></a>Nuances:</h4><ul>
+<li>Because BFS uses queues to store information about the nodes and its children, it could use more memory than is available on your computer.  (But you probably won’t have to worry about this.)</li>
+<li>If using a DFS on a tree that is very deep you might go unnecessarily deep in the search. See <a href="http://xkcd.com/761/">xkcd</a> for more information.</li>
+<li>Breadth First Search tends to be a looping algorithm.</li>
+<li>Depth First Search tends to be a recursive algorithm.</li>
+</ul>
+<h2 id="Efficient-Sorting-Basics"><a href="#Efficient-Sorting-Basics" class="headerlink" title="Efficient Sorting Basics"></a>Efficient Sorting Basics</h2><h3 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge Sort"></a><strong>Merge Sort</strong></h3><h4 id="Definition-6"><a href="#Definition-6" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>A comparison based sorting algorithm<ul>
+<li>Divides entire dataset into groups of at most two.</li>
+<li>Compares each number one at a time, moving the smallest number to left of the pair.</li>
+<li>Once all pairs sorted it then compares left most elements of the two leftmost pairs creating a sorted group of four with the smallest numbers on the left and the largest ones on the right. </li>
+<li>This process is repeated until there is only one set.</li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-6"><a href="#What-you-need-to-know-6" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>This is one of the most basic sorting algorithms.</li>
+<li>Know that it divides all the data into as small possible sets then compares them.</li>
+</ul>
+<h4 id="Big-O-efficiency-6"><a href="#Big-O-efficiency-6" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Best Case Sort: Merge Sort: O(n)</li>
+<li>Average Case Sort: Merge Sort: O(n log n)</li>
+<li>Worst Case Sort: Merge Sort: O(n log n)</li>
+</ul>
+<h3 id="Quicksort"><a href="#Quicksort" class="headerlink" title="Quicksort"></a><strong>Quicksort</strong></h3><h4 id="Definition-7"><a href="#Definition-7" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>A comparison based sorting algorithm<ul>
+<li>Divides entire dataset in half by selecting the average element and putting all smaller elements to the left of the average.</li>
+<li>It repeats this process on the left side until it is comparing only two elements at which point the left side is sorted.</li>
+<li>When the left side is finished sorting it performs the same operation on the right side.</li>
+</ul>
+</li>
+<li>Computer architecture favors the quicksort process.</li>
+</ul>
+<h4 id="What-you-need-to-know-7"><a href="#What-you-need-to-know-7" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>While it has the same Big O as (or worse in some cases) many other sorting algorithms it is often faster in practice than many other sorting algorithms, such as merge sort.</li>
+<li>Know that it halves the data set by the average continuously until all the information is sorted.</li>
+</ul>
+<h4 id="Big-O-efficiency-7"><a href="#Big-O-efficiency-7" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Best Case Sort: Merge Sort: O(n)</li>
+<li>Average Case Sort: Merge Sort: O(n log n)</li>
+<li>Worst Case Sort: Merge Sort: O(n^2)</li>
+</ul>
+<h3 id="Bubble-Sort"><a href="#Bubble-Sort" class="headerlink" title="Bubble Sort"></a><strong>Bubble Sort</strong></h3><h4 id="Definition-8"><a href="#Definition-8" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>A comparison based sorting algorithm<ul>
+<li>It iterates left to right comparing every couplet, moving the smaller element to the left.</li>
+<li>It repeats this process until it no longer moves and element to the left.</li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-8"><a href="#What-you-need-to-know-8" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>While it is very simple to implement, it is the least efficient of these three sorting methods.</li>
+<li>Know that it moves one space to the right comparing two elements at a time and moving the smaller on to left.</li>
+</ul>
+<h4 id="Big-O-efficiency-8"><a href="#Big-O-efficiency-8" class="headerlink" title="Big O efficiency:"></a>Big O efficiency:</h4><ul>
+<li>Best Case Sort: Merge Sort: O(n)</li>
+<li>Average Case Sort: Merge Sort: O(n^2)</li>
+<li>Worst Case Sort: Merge Sort: O(n^2)</li>
+</ul>
+<h4 id="Merge-Sort-Vs-Quicksort"><a href="#Merge-Sort-Vs-Quicksort" class="headerlink" title="Merge Sort Vs. Quicksort"></a>Merge Sort Vs. Quicksort</h4><ul>
+<li>Quicksort is likely faster in practice.</li>
+<li>Merge Sort divides the set into the smallest possible groups immediately then reconstructs the incrementally as it sorts the groupings.</li>
+<li>Quicksort continually divides the set by the average, until the set is recursively sorted.</li>
+</ul>
+<h2 id="Basic-Types-of-Algorithms"><a href="#Basic-Types-of-Algorithms" class="headerlink" title="Basic Types of Algorithms"></a>Basic Types of Algorithms</h2><h3 id="Recursive-Algorithms"><a href="#Recursive-Algorithms" class="headerlink" title="Recursive Algorithms"></a><strong>Recursive Algorithms</strong></h3><h4 id="Definition-9"><a href="#Definition-9" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>An algorithm that calls itself in its definition.<ul>
+<li><strong>Recursive case</strong> a conditional statement that is used to trigger the recursion.</li>
+<li><strong>Base case</strong> a conditional statement that is used to break the recursion.</li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-9"><a href="#What-you-need-to-know-9" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li><strong>Stack level too deep</strong> and <strong>stack overflow</strong>.<ul>
+<li>If you’ve seen either of these from a recursive algorithm, you messed up.</li>
+<li>It means that your base case was never triggered because it was faulty or the problem was so massive you ran out of RAM before reaching it.</li>
+<li>Knowing whether or not you will reach a base case is integral to correctly using recursion.</li>
+<li>Often used in Depth First Search</li>
+</ul>
+</li>
+</ul>
+<h3 id="Iterative-Algorithms"><a href="#Iterative-Algorithms" class="headerlink" title="Iterative Algorithms"></a><strong>Iterative Algorithms</strong></h3><h4 id="Definition-10"><a href="#Definition-10" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>An algorithm that is called repeatedly but for a finite number of times, each time being a single iteration.<ul>
+<li>Often used to move incrementally through a data set.</li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-10"><a href="#What-you-need-to-know-10" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>Generally you will see iteration as loops, for, while, and until statements.</li>
+<li>Think of iteration as moving one at a time through a set.</li>
+<li>Often used to move through an array.</li>
+</ul>
+<h4 id="Recursion-Vs-Iteration"><a href="#Recursion-Vs-Iteration" class="headerlink" title="Recursion Vs. Iteration"></a>Recursion Vs. Iteration</h4><ul>
+<li>The differences between recursion and iteration can be confusing to distinguish since both can be used to implement the other. But know that,<ul>
+<li>Recursion is, usually, more expressive and easier to implement.</li>
+<li>Iteration uses less memory.</li>
+</ul>
+</li>
+<li><strong>Functional languages</strong> tend to use recursion. (i.e. Haskell)</li>
+<li><strong>Imperative languages</strong> tend to use iteration. (i.e. Ruby)</li>
+<li>Check out this <a href="http://stackoverflow.com/questions/19794739/what-is-the-difference-between-iteration-and-recursion">Stack Overflow post</a> for more info.</li>
+</ul>
+<h4 id="Pseudo-Code-of-Moving-Through-an-Array-this-is-why-iteration-is-used-for-this"><a href="#Pseudo-Code-of-Moving-Through-an-Array-this-is-why-iteration-is-used-for-this" class="headerlink" title="Pseudo Code of Moving Through an Array (this is why iteration is used for this)"></a>Pseudo Code of Moving Through an Array (this is why iteration is used for this)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Recursion                         | Iteration</span><br><span class="line">----------------------------------|----------------------------------</span><br><span class="line">recursive method (array, n)       | iterative method (array)</span><br><span class="line">  if array[n] is not nil          |   for n from 0 to size of array</span><br><span class="line">    print array[n]                |     print(array[n])</span><br><span class="line">    recursive method(array, n+1)  |</span><br><span class="line">  else                            |</span><br><span class="line">    exit loop                     |</span><br></pre></td></tr></table></figure>
+<h3 id="Greedy-Algorithm"><a href="#Greedy-Algorithm" class="headerlink" title="Greedy Algorithm"></a><strong>Greedy Algorithm</strong></h3><h4 id="Definition-11"><a href="#Definition-11" class="headerlink" title="Definition:"></a>Definition:</h4><ul>
+<li>An algorithm that, while executing, selects only the information that meets a certain criteria.</li>
+<li>The general five components, taken from <a href="http://en.wikipedia.org/wiki/Greedy_algorithm#Specifics">Wikipedia</a>:<ul>
+<li>A candidate set, from which a solution is created.</li>
+<li>A selection function, which chooses the best candidate to be added to the solution.</li>
+<li>A feasibility function, that is used to determine if a candidate can be used to contribute to a solution.</li>
+<li>An objective function, which assigns a value to a solution, or a partial solution.</li>
+<li>A solution function, which will indicate when we have discovered a complete solution.</li>
+</ul>
+</li>
+</ul>
+<h4 id="What-you-need-to-know-11"><a href="#What-you-need-to-know-11" class="headerlink" title="What you need to know:"></a>What you need to know:</h4><ul>
+<li>Used to find the optimal solution for a given problem.</li>
+<li>Generally used on sets of data where only a small proportion of the information evaluated meets the desired result.</li>
+<li>Often a greedy algorithm can help reduce the Big O of an algorithm.</li>
+</ul>
+<h4 id="Pseudo-Code-of-a-Greedy-Algorithm-to-Find-Largest-Difference-of-any-Two-Numbers-in-an-Array"><a href="#Pseudo-Code-of-a-Greedy-Algorithm-to-Find-Largest-Difference-of-any-Two-Numbers-in-an-Array" class="headerlink" title="Pseudo Code of a Greedy Algorithm to Find Largest Difference of any Two Numbers in an Array."></a>Pseudo Code of a Greedy Algorithm to Find Largest Difference of any Two Numbers in an Array.</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">greedy algorithm (array)</span><br><span class="line">  var largest difference &#x3D; 0</span><br><span class="line">  var new difference &#x3D; find next difference (array[n], array[n+1])</span><br><span class="line">  largest difference &#x3D; new difference if new difference is &gt; largest difference</span><br><span class="line">  repeat above two steps until all differences have been found</span><br><span class="line">  return largest difference</span><br></pre></td></tr></table></figure>
+
+<p>This algorithm never needed to compare all the differences to one another, saving it an entire iteration.</p>
 ]]></content>
       <categories>
-        <category>教程</category>
+        <category>quick guide</category>
       </categories>
       <tags>
-        <tag>tutorial</tag>
+        <tag>basic reference</tag>
       </tags>
   </entry>
   <entry>
@@ -284,6 +543,30 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+        <tag>tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PicGo图床同步Typora图片至GitHub</title>
+    <url>/2021/03/18/PicGo%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h1><span id="more"></span>
+
+<h2 id="1-创建一个新的GitHUb仓库"><a href="#1-创建一个新的GitHUb仓库" class="headerlink" title="1.创建一个新的GitHUb仓库"></a>1.创建一个新的GitHUb仓库</h2><ul>
+<li><p>注意仓库需是Public</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315202712610.png" alt="image-20210315202712610"></p>
+</li>
+</ul>
+<h2 id="2-生成token"><a href="#2-生成token" class="headerlink" title="2.生成token:"></a>2.生成token:</h2><p>  <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315203012043.png" alt="image-20210315203012043"></p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315203335536.png" alt="image-20210315203335536"></p>
+<h2 id="3-配置PicGo"><a href="#3-配置PicGo" class="headerlink" title="3.配置PicGo"></a>3.配置PicGo</h2><p>  <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315204803300.png" alt="image-20210315204803300"></p>
+<h2 id="4-PicoGO同步失败注意事项"><a href="#4-PicoGO同步失败注意事项" class="headerlink" title="4.PicoGO同步失败注意事项"></a>4.PicoGO同步失败注意事项</h2><ul>
+<li>图片名设置<br>开启时间戳命名，否则重名图片上传会失败<br><img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk4MjIzOA==,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
         <tag>tutorial</tag>
       </tags>
   </entry>
