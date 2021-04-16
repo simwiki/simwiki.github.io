@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"simwiki.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#20B2AA","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Git 记录git的常用操作、流程、数据恢复等。">
+  <meta name="description" content="Git  记录git的常用操作、流程、数据恢复等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git日常使用记录">
 <meta property="og:url" content="http://simwiki.github.io/2021/03/23/Git%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="simwiki">
-<meta property="og:description" content="Git 记录git的常用操作、流程、数据恢复等。">
+<meta property="og:description" content="Git  记录git的常用操作、流程、数据恢复等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-23T11:37:22.000Z">
 <meta property="article:modified_time" content="2021-03-24T03:39:04.815Z">
@@ -294,16 +294,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><blockquote>
+        <h1 id="git"><a class="markdownIt-Anchor" href="#git"></a> Git</h1>
+<blockquote>
 <p>记录git的常用操作、流程、数据恢复等。</p>
 </blockquote>
 <span id="more"></span>
-
-<h2 id="01-常用"><a href="#01-常用" class="headerlink" title="01. 常用"></a>01. 常用</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看当前git状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看提交日志，同时可查看是否包含upstream/master</span></span><br><span class="line">git log --pretty=oneline --abbrev-commit --graph</span><br><span class="line"><span class="meta">#</span><span class="bash"> 同步fork的源仓库，增加upstream源</span></span><br><span class="line">git remote add upstream git@项目地址/项目名称.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> 提取数据</span></span><br><span class="line">git fetch upstream</span><br><span class="line"><span class="meta">#</span><span class="bash"> 合并到本地分支</span></span><br><span class="line">git merge upstream/master</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用fetch再merge，会在本地产生一个新的提交</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 远程仓库更新时，所以一般使用以下命令同步源【同样，如果不加--rebase参数，也会在本地产生一个新的提交】</span></span><br><span class="line">git pull --rebase upstream mast</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git reset命令可以将仓库区中的HEAD指针指向之前的commit id上,不同的参数会使工作区、stage区出现不一样的变化</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --hard 目前的更改及之前的提交都会删除，工作区和stage区的内容同步到仓库区HEAD指针所指向的commit id处</span></span><br><span class="line">git reset --hard c5e4a0340d48b9f3bf71d774a85b0bfe9d7d98d9</span><br><span class="line"><span class="meta">#</span><span class="bash"> --soft 目前的更改会保留在工作区，之前已提交的内容的差异会在stage区，即to be commited状态</span></span><br><span class="line">git reset --soft bba88e9f6c9e75d90ad00551f0d27d1bab915aeb</span><br><span class="line"><span class="meta">#</span><span class="bash"> --mixed 目前的更改及之前的提交会保留在工作区，stage会清空</span></span><br><span class="line">git reset --mixed f74df8fd863458e5c3e3dd428ebf0f5bceab1efa</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git restore命令可以撤销更改; 如果已经提交到stage区，可以按照以下步骤撤销更改</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --staged 撤销stage区的更改，即撤销 git add xx 的操作</span></span><br><span class="line">git restore --staged requirement.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> --worktree 撤销工作区的更改，即撤销本地对 requirement.txt 的修改操作</span></span><br><span class="line">git restore --worktree requirement.txt</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 本地有修改还未提交时，如果这时需要pull uptream，可以先使用git stash将当前状态保存至缓存区【与stage区不同？】</span></span><br><span class="line">git stash</span><br><span class="line">git pull --rebase upstream master</span><br><span class="line">git stash pop 		# 此时若出现conflict，可以结合reset、restore命令进行修改</span><br><span class="line">git stash clear		# 之后解决conflict之后，可以清除缓存区内容</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除本地分支</span></span><br><span class="line">git branch -d [branch_name]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除远程分支</span></span><br><span class="line">git push origin --delete [branch_name]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 合并dev分支到master分支</span></span><br><span class="line">git pull origin dev</span><br><span class="line">git checkout master</span><br><span class="line">git merge dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当提交代码后，又做了微小改动，但不想再额外增加comment信息时，执行以下命令，再推送到远程</span></span><br><span class="line">git commit --amend --no-edit</span><br><span class="line">git pull --rebase upstream master</span><br><span class="line">git push -f origin dev</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="02-流程"><a href="#02-流程" class="headerlink" title="02. 流程"></a>02. 流程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 0.先rebase下代码【同理，本地写代码前，最好先rebase下】</span></span><br><span class="line">git pull --rebase upstream master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 有conflict的情况；</span></span><br><span class="line"><span class="comment"># 1.1 先手动解决冲突</span></span><br><span class="line">git rebase --<span class="keyword">continue</span></span><br><span class="line"><span class="comment"># 1.2 后push，在网页上查看change状态是否正确</span></span><br><span class="line">git push -f origin dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 没有conflict的情况</span></span><br><span class="line"><span class="comment"># 2.1 直接push</span></span><br><span class="line">git push origin dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.其他</span></span><br><span class="line"><span class="comment"># 3.1 当本地有全新的更改时，且upstream上没有对应的代码文件，直接pull不会出错。</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="0x-数据恢复"><a href="#0x-数据恢复" class="headerlink" title="0x. 数据恢复"></a>0x. 数据恢复</h2><blockquote>
+<h2 id="01-常用"><a class="markdownIt-Anchor" href="#01-常用"></a> 01. 常用</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看当前git状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看提交日志，同时可查看是否包含upstream/master</span></span><br><span class="line">git log --pretty=oneline --abbrev-commit --graph</span><br><span class="line"><span class="meta">#</span><span class="bash"> 同步fork的源仓库，增加upstream源</span></span><br><span class="line">git remote add upstream git@项目地址/项目名称.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> 提取数据</span></span><br><span class="line">git fetch upstream</span><br><span class="line"><span class="meta">#</span><span class="bash"> 合并到本地分支</span></span><br><span class="line">git merge upstream/master</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用fetch再merge，会在本地产生一个新的提交</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 远程仓库更新时，所以一般使用以下命令同步源【同样，如果不加--rebase参数，也会在本地产生一个新的提交】</span></span><br><span class="line">git pull --rebase upstream mast</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git reset命令可以将仓库区中的HEAD指针指向之前的commit id上,不同的参数会使工作区、stage区出现不一样的变化</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --hard 目前的更改及之前的提交都会删除，工作区和stage区的内容同步到仓库区HEAD指针所指向的commit id处</span></span><br><span class="line">git reset --hard c5e4a0340d48b9f3bf71d774a85b0bfe9d7d98d9</span><br><span class="line"><span class="meta">#</span><span class="bash"> --soft 目前的更改会保留在工作区，之前已提交的内容的差异会在stage区，即to be commited状态</span></span><br><span class="line">git reset --soft bba88e9f6c9e75d90ad00551f0d27d1bab915aeb</span><br><span class="line"><span class="meta">#</span><span class="bash"> --mixed 目前的更改及之前的提交会保留在工作区，stage会清空</span></span><br><span class="line">git reset --mixed f74df8fd863458e5c3e3dd428ebf0f5bceab1efa</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git restore命令可以撤销更改; 如果已经提交到stage区，可以按照以下步骤撤销更改</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --staged 撤销stage区的更改，即撤销 git add xx 的操作</span></span><br><span class="line">git restore --staged requirement.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> --worktree 撤销工作区的更改，即撤销本地对 requirement.txt 的修改操作</span></span><br><span class="line">git restore --worktree requirement.txt</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 本地有修改还未提交时，如果这时需要pull uptream，可以先使用git stash将当前状态保存至缓存区【与stage区不同？】</span></span><br><span class="line">git stash</span><br><span class="line">git pull --rebase upstream master</span><br><span class="line">git stash pop 		# 此时若出现conflict，可以结合reset、restore命令进行修改</span><br><span class="line">git stash clear		# 之后解决conflict之后，可以清除缓存区内容</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除本地分支</span></span><br><span class="line">git branch -d [branch_name]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除远程分支</span></span><br><span class="line">git push origin --delete [branch_name]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 合并dev分支到master分支</span></span><br><span class="line">git pull origin dev</span><br><span class="line">git checkout master</span><br><span class="line">git merge dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当提交代码后，又做了微小改动，但不想再额外增加comment信息时，执行以下命令，再推送到远程</span></span><br><span class="line">git commit --amend --no-edit</span><br><span class="line">git pull --rebase upstream master</span><br><span class="line">git push -f origin dev</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="02-流程"><a class="markdownIt-Anchor" href="#02-流程"></a> 02. 流程</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 0.先rebase下代码【同理，本地写代码前，最好先rebase下】</span></span><br><span class="line">git pull --rebase upstream master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 有conflict的情况；</span></span><br><span class="line"><span class="comment"># 1.1 先手动解决冲突</span></span><br><span class="line">git rebase --<span class="keyword">continue</span></span><br><span class="line"><span class="comment"># 1.2 后push，在网页上查看change状态是否正确</span></span><br><span class="line">git push -f origin dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 没有conflict的情况</span></span><br><span class="line"><span class="comment"># 2.1 直接push</span></span><br><span class="line">git push origin dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.其他</span></span><br><span class="line"><span class="comment"># 3.1 当本地有全新的更改时，且upstream上没有对应的代码文件，直接pull不会出错。</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x-数据恢复"><a class="markdownIt-Anchor" href="#0x-数据恢复"></a> 0x. 数据恢复</h2>
+<blockquote>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5788037/recover-from-git-reset-hard">参考链接</a></li>
 </ul>
@@ -316,32 +317,35 @@
 <p><strong>参考链接：</strong><a target="_blank" rel="noopener" href="https://docs.github.com/en/github/using-git/changing-a-remotes-url">Changing a remote’s URL</a></p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 更改用户名前</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta">#</span><span class="bash"> origin	git@github.com:pick-up-a-drop-of-water/Back2Zero.git (fetch)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> origin	git@github.com:pick-up-a-drop-of-water/Back2Zero.git (push)</span></span><br><span class="line">git remote set-url origin git@github.com:simwiki/Back2Zero.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> 更改用户名后</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta">#</span><span class="bash"> origin	git@github.com:simwiki/Back2Zero.git (fetch)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> origin	git@github.com:simwiki/Back2Zero.git (push)</span></span><br></pre></td></tr></table></figure>
-
 <p>分割线</p>
-<hr>
-<h2 id="1-本地库操作："><a href="#1-本地库操作：" class="headerlink" title="1. 本地库操作："></a>1. 本地库操作：</h2><ul>
+<hr />
+<h2 id="1-本地库操作"><a class="markdownIt-Anchor" href="#1-本地库操作"></a> 1. 本地库操作：</h2>
+<ul>
 <li>git status 查看工作区的状态</li>
 <li>git diff 查看被修改的内容</li>
-<li>git log 查看提交的历史记录<ul>
-<li>如果嫌显示的太多，看得眼花缭乱的，可以试试加上git log –pretty=oneline</li>
+<li>git log 查看提交的历史记录
+<ul>
+<li>如果嫌显示的太多，看得眼花缭乱的，可以试试加上git log --pretty=oneline</li>
 </ul>
 </li>
-<li>git reset 版本回退、清空暂存区的内容<ul>
-<li>git reset –hard HEAD^ （一个尖括号代表回退一次上个版本，回退100次可以用，HEAD~100）</li>
-<li>git reset –hard commitId （commitId就是你commit之后那串SHA1加密后的串，使用comitId可以跳到你任何你想去的版本）</li>
+<li>git reset 版本回退、清空暂存区的内容
+<ul>
+<li>git reset --hard HEAD^ （一个尖括号代表回退一次上个版本，回退100次可以用，HEAD~100）</li>
+<li>git reset --hard commitId （commitId就是你commit之后那串SHA1加密后的串，使用comitId可以跳到你任何你想去的版本）</li>
 <li>git reflog （可以查看每次的commitId）</li>
 <li>git reset HEAD filename （把提交到暂存区的内容清空掉，然后在使用git checkout – filename 清空工作区）</li>
 </ul>
 </li>
 <li>git rm filename 在git版本库上删除这个文件</li>
 </ul>
-<h2 id="2-远程仓库操作："><a href="#2-远程仓库操作：" class="headerlink" title="2. 远程仓库操作："></a>2. 远程仓库操作：</h2><ul>
-<li>git remote add origin git@git名:路径/远程仓库名.git （关联一个远程库）<pre><code>    例子：git remote add origin git@github.com:michaelliao/learngit.git
-</code></pre>
-</li>
+<h2 id="2-远程仓库操作"><a class="markdownIt-Anchor" href="#2-远程仓库操作"></a> 2. 远程仓库操作：</h2>
+<ul>
+<li>git remote add origin git@git名:路径/远程仓库名.git （关联一个远程库）<br />
+例子：git remote add origin <a href="mailto:git@github.com">git@github.com</a>:michaelliao/learngit.git</li>
 <li>git push -u origin master （第一次推送master分支的所有内容，要加-u参数）</li>
 <li>git push origin master （此后，每次本地提交后，可以用这个命令推送最新修改）</li>
-<li>git checkout -b dev （创建并切换到dev分支）<ul>
+<li>git checkout -b dev （创建并切换到dev分支）
+<ul>
 <li>这个其实是两命令合在一起的快速写法</li>
 <li>git branch dev （创建dev分支）</li>
 <li>git checkout dev （切换到dev分支）</li>
@@ -352,41 +356,43 @@
 <li>git merge （用于合并指定分支到当前分支）</li>
 <li>git merge dev （把dev分支的工作成果合并到master分支上，在master分支下运行</li>
 <li>git branch -d dev （删除dev分支）</li>
-<li>git merge –no-ff -m “merge with no-ff” dev （使用–no-ff合并可以回退到分支，fast-forward看不到被合并的分支。    因为采用这模式合并之后会多了一次commit，所以需要使用 -m  “commit信息”）</li>
+<li>git merge --no-ff -m “merge with no-ff” dev （使用–no-ff合并可以回退到分支，fast-forward看不到被合并的分支。    因为采用这模式合并之后会多了一次commit，所以需要使用 -m  “commit信息”）</li>
 <li>git remote -v （显示了可以抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址。）</li>
 <li>git push origin master （把本地的master分支推送到origin远程仓库上）</li>
 <li>git push origin dev （如果要推送其他分支，比如dev，就改成这样）</li>
 <li>git rebase（把分叉的提交历史“整理”成一条直线，看上去更直观。缺点是本地的分叉提交已经被修改过）</li>
 </ul>
-<h2 id="3-合并冲突："><a href="#3-合并冲突：" class="headerlink" title="3. 合并冲突："></a>3. 合并冲突：</h2><ul>
+<h2 id="3-合并冲突"><a class="markdownIt-Anchor" href="#3-合并冲突"></a> 3. 合并冲突：</h2>
+<ul>
 <li>git merge dev （会提示冲突）</li>
-<li>git status （查看冲突文件）<ul>
+<li>git status （查看冲突文件）
+<ul>
 <li>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容。 解决冲突就是把这些删除成你最终想要的样子</li>
 </ul>
 </li>
 <li>git add index.php</li>
 <li>git commit -m “conflict fixed”</li>
 <li>git branch -d dev</li>
-<li>git log –graph （可以看到分支合并图）</li>
-<li>git log –graph –pretty=oneline –abbrev-commit （查看分支图，并且是区掉无用信息的）</li>
+<li>git log --graph （可以看到分支合并图）</li>
+<li>git log --graph --pretty=oneline --abbrev-commit （查看分支图，并且是区掉无用信息的）</li>
 </ul>
-<h2 id="4-修复BUG："><a href="#4-修复BUG：" class="headerlink" title="4. 修复BUG："></a>4. 修复BUG：</h2><ul>
+<h2 id="4-修复bug"><a class="markdownIt-Anchor" href="#4-修复bug"></a> 4. 修复BUG：</h2>
+<ul>
 <li>git stash （保存现场到当前分支。 ps：如果不保存，那么你切到别的分支区解决bug，工作区的修改也会带过去）</li>
 <li>git status （工作区如果是干净的，则代表保存了。 工作区没有被污染）</li>
 <li>git checkout master（确定要在哪个分支上修复bug，就切换到那个分支）</li>
-<li>git checkout -b issue-101 （创建并切换到新建的解决BUG的分支）<pre><code>修复BUG文件， add .... commit ....
-</code></pre>
-</li>
-<li>git checkout master | git merge –no-ff -m “merged bug fix 101” issue-101 | git branch -d issue-101（修复完成后，切换到master分支，并完成合并，最后删除issue-101分支）<pre><code>上面步骤修复完成， 现在回到dev分支恢复现场，继续工作
-</code></pre>
-</li>
+<li>git checkout -b issue-101 （创建并切换到新建的解决BUG的分支）<br />
+修复BUG文件， add … commit …</li>
+<li>git checkout master | git merge --no-ff -m “merged bug fix 101” issue-101 | git branch -d issue-101（修复完成后，切换到master分支，并完成合并，最后删除issue-101分支）<br />
+上面步骤修复完成， 现在回到dev分支恢复现场，继续工作</li>
 <li>git checkout dev （切换到之前保存现场的分支）</li>
 <li>git stash list （查看保存的现场信息）</li>
 <li>git stash pop （恢复现场）</li>
 <li>git stash apply stash@{0} （先用git stash list查看，然后恢复指定的stash）</li>
 <li>git cherry-pick 4c805e2 （在当前dev分支下，复制4c805e2 fix bug 101这个提交所做的修改。 注意：我们只想复制4c805e2 fix bug 101这个提交所做的修改，并不是把整个master分支merge过来。）</li>
 </ul>
-<h2 id="5-标签操作："><a href="#5-标签操作：" class="headerlink" title="5. 标签操作："></a>5. 标签操作：</h2><ul>
+<h2 id="5-标签操作"><a class="markdownIt-Anchor" href="#5-标签操作"></a> 5. 标签操作：</h2>
+<ul>
 <li>git tag <name> （创建一个标签）</li>
 <li>git tag （查看所有标签。注意，标签不是按时间顺序列出，而是按字母排序的）</li>
 <li>git tag v0.9 f52c633 （对特定的commitId打标签， git tag tagName commitId）</li>
@@ -394,7 +400,7 @@
 <li>git tag -a v0.1 -m “version 0.1 released” 1094adb （还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字）</li>
 <li>git tag -d v0.1 （删除标签）</li>
 <li>git push origin <tagname> （推送某个标签到远程）</li>
-<li>git push origin –tags （一次性推送全部尚未推送到远程的本地标签）</li>
+<li>git push origin --tags （一次性推送全部尚未推送到远程的本地标签）</li>
 <li>git push origin :refs/tags/v0.9 （从远程删除）</li>
 </ul>
 
@@ -482,7 +488,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#01-%E5%B8%B8%E7%94%A8"><span class="nav-text">01. 常用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-%E6%B5%81%E7%A8%8B"><span class="nav-text">02. 流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x-%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D"><span class="nav-text">0x. 数据恢复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%9C%AC%E5%9C%B0%E5%BA%93%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-text">1. 本地库操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-text">2. 远程仓库操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%90%88%E5%B9%B6%E5%86%B2%E7%AA%81%EF%BC%9A"><span class="nav-text">3. 合并冲突：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BF%AE%E5%A4%8DBUG%EF%BC%9A"><span class="nav-text">4. 修复BUG：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%A0%87%E7%AD%BE%E6%93%8D%E4%BD%9C%EF%BC%9A"><span class="nav-text">5. 标签操作：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git"><span class="nav-text"> Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#01-%E5%B8%B8%E7%94%A8"><span class="nav-text"> 01. 常用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-%E6%B5%81%E7%A8%8B"><span class="nav-text"> 02. 流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x-%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D"><span class="nav-text"> 0x. 数据恢复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%9C%AC%E5%9C%B0%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text"> 1. 本地库操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text"> 2. 远程仓库操作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%90%88%E5%B9%B6%E5%86%B2%E7%AA%81"><span class="nav-text"> 3. 合并冲突：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BF%AE%E5%A4%8Dbug"><span class="nav-text"> 4. 修复BUG：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%A0%87%E7%AD%BE%E6%93%8D%E4%BD%9C"><span class="nav-text"> 5. 标签操作：</span></a></li></ol></li></ol></div>
         <!--网易云音乐-->
         
           <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="//music.163.com/outchain/player?type=2&id=35448922&auto=0&height=66"></iframe>
@@ -502,7 +508,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -584,12 +590,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">50k</span>
+    <span title="站点总字数">53k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">46 分钟</span>
+    <span title="站点阅读时长">49 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
@@ -674,6 +680,8 @@
 
 
 
+
+  
 
   
 

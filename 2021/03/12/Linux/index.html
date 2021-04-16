@@ -294,26 +294,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><span id="more"></span>
-
+        <h1 id="linux"><a class="markdownIt-Anchor" href="#linux"></a> Linux</h1>
+<span id="more"></span>
 <ul>
-<li><p>磁盘空间</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看系统整体磁盘使用情况</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前文件夹不同文件（夹）的使用情况</span></span><br><span class="line">du -sh *</span><br></pre></td></tr></table></figure></li>
-<li><p>crontab</p>
+<li>磁盘空间</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看系统整体磁盘使用情况</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前文件夹不同文件（夹）的使用情况</span></span><br><span class="line">du -sh *</span><br></pre></td></tr></table></figure>
+<ul>
+<li>crontab</li>
+</ul>
 <blockquote>
 <p>CentOS上配置cron任务时，应先cd到对应路径，再执行sh文件。</p>
 </blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># clean docker &amp; fetch data &amp; train model every 12 hours</span></span><br><span class="line">22 */12 * * * <span class="built_in">cd</span> /home/nice/brain/workspace/wangxinke/recommender/ &amp;&amp; sh ./pipeline.sh</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -e	<span class="comment"># fail and exit on any command erroring</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you know you are deleting files, you can check if it a file and then delete.</span></span><br><span class="line"><span class="built_in">test</span> -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span> &amp;&amp; rm -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 传输mac下的hotlive文件夹至dev01下的data文件夹下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以下命令是在dev01服务器上执行的</span></span><br><span class="line">sudo scp -r xk_wang@192.168.72.229:/Users/xk_wang/Desktop/recommender/data/hotlive data/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用wget + http.server的方式传输文件</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># clean docker &amp; fetch data &amp; train model every 12 hours</span></span><br><span class="line">22 */12 * * * <span class="built_in">cd</span> /home/nice/brain/workspace/wangxinke/recommender/ &amp;&amp; sh ./pipeline.sh</span><br></pre></td></tr></table></figure>
+<h2 id="shell"><a class="markdownIt-Anchor" href="#shell"></a> shell</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -e	<span class="comment"># fail and exit on any command erroring</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you know you are deleting files, you can check if it a file and then delete.</span></span><br><span class="line"><span class="built_in">test</span> -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span> &amp;&amp; rm -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="传输文件"><a class="markdownIt-Anchor" href="#传输文件"></a> 传输文件</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 传输mac下的hotlive文件夹至dev01下的data文件夹下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以下命令是在dev01服务器上执行的</span></span><br><span class="line">sudo scp -r xk_wang@192.168.72.229:/Users/xk_wang/Desktop/recommender/data/hotlive data/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用wget + http.server的方式传输文件</span></span><br></pre></td></tr></table></figure>
+<h2 id="权限"><a class="markdownIt-Anchor" href="#权限"></a> 权限</h2>
+<ul>
 <li>递归更改某目录下的文件和文件夹权限为最高权限</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R 777 log/hotlive/20210303/</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -399,7 +401,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-text">shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6"><span class="nav-text">传输文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90"><span class="nav-text">权限</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux"><span class="nav-text"> Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-text"> shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6"><span class="nav-text"> 传输文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90"><span class="nav-text"> 权限</span></a></li></ol></li></ol></div>
         <!--网易云音乐-->
         
           <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="//music.163.com/outchain/player?type=2&id=35448922&auto=0&height=66"></iframe>
@@ -419,7 +421,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -501,12 +503,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">50k</span>
+    <span title="站点总字数">53k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">46 分钟</span>
+    <span title="站点阅读时长">49 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
@@ -591,6 +593,8 @@
 
 
 
+
+  
 
   
 
