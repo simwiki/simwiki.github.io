@@ -1,0 +1,1310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Algorithmic Trade Infos</title>
+    <url>/2021/03/26/Algorithmic_Trade/</url>
+    <content><![CDATA[<h1 id="trade">Trade</h1>
+<span id="more"></span>
+<h2 id="什么是交易所挂单maker和交易所吃单taker">什么是交易所挂单（maker）和交易所吃单（taker）</h2>
+<blockquote>
+<p>创造者（market maker）： 在下订单时你成为“创造者”，并且这不是立即能成交的交易，因此你所创造的订单会保留在订单簿（order book）中，并等待其他人稍后配对。</p>
+</blockquote>
+<blockquote>
+<p>接受者（market taker）：从现有订单簿上找到匹配订单并决定订购的人。</p>
+</blockquote>
+<p>通常情况下，创造者比接受者的交易费用低。这是因为创造者的角色为订单<strong>提供了流动性</strong>（通过下订单而在未来找到匹配买家，这让创造者造就了市场。换言之，创造者下的订单就好比在商店货架上的产品一样）。相反，接受者通过下单的消费方式<strong>减少了流动性</strong>（从订单簿中取出订单，就像从商店取走库存一样的道理）。</p>
+<p><strong>市场显示的订单交易通常都是接受者的，因为创造者的订单是永远不会出现在订单簿上的。</strong>交易执行后，就需要支付相应的交易费用，不管你是作为创造者（买家）或是接受者（买家），订单在确认后会根据你是创造者还是接受者而收取不同费用。</p>
+<p>以上这些环节，有涉及很多费率的名词，比如交易手续费、挂单、吃单、交割手续费、广告费、提币费、人民币提现费。</p>
+<p><strong>挨个跟大家解释下：</strong></p>
+<p>交易手续费，也就是买入成交、卖出成交涉及的费用。</p>
+<p>但买入和卖出是挂单成交，还是吃单成交;是限价交易，还是市价交易，有时候费率也会不一样。</p>
+<h2 id="挂单吃单是什么意思">挂单、吃单是什么意思?</h2>
+<blockquote>
+<p>挂单：主动挂单，等待成交。不管挂的买单还是卖单，但凡挂出去，被动等待成交的都叫挂单。对于挂单的定义，关键词在<strong>等待成交</strong>。</p>
+</blockquote>
+<blockquote>
+<p>吃单：主动成交别人的挂单。不管是买入还是卖出，对于吃单的定义，关键词在<strong>主动成交</strong>。</p>
+</blockquote>
+<p>吃单的意义在于能更快成交。</p>
+<h2 id="限价交易市价交易什么意思">限价交易、市价交易什么意思?</h2>
+<blockquote>
+<p>限价交易（limit order）：<strong>即挂单交易。可以自己设定买卖价格，等市场价格波动到所设定的价格是即可成交。</strong>举个例子，今天麦芽想要买入MMB(瞎编的某某币)。它当前价格为8元，但预期它会回跌，或者我就想成交价低一些，就可以挂7.5元的买入价。等待它成交。这个方式的优点就在于买入价，是自己设定的价格。槽点即是，它很久才能成交，甚至不成交。那就有可能让自己错失买入机会。</p>
+</blockquote>
+<blockquote>
+<p>市场交易（market order）：<strong>即按照市场最优价格成交。</strong>这种 方式的交易不输入买卖价格，只需要输入买入总量。系统会根据当前最优价格成交。如果想要快速成交，选市价交易更好。这通常是短线投资者优选的交易方式。</p>
+</blockquote>
+<p>通常市价交易里无所谓吃单挂单，都是系统撮合成交，双向收费。限价交易里：有更多吃单挂单之分。以火币网EOS/USFT 即时买卖价举个例子： <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/1572510224192601.png" alt="image.png" /> 假设我们在限价交易里：输入10.64去买入EOS，那么即主动买入卖1的单。为吃单。</p>
+<p>如果输入10.55去买入EOS，等待价格波动到10.55去成交，则为挂单。</p>
+<p>但这里有的问题是：maker、taker又是什么鬼?有些平台以这个名词分界来收费，似乎跟这的挂单吃单很像?</p>
+<p>taker，通常为吃单方，意思没差。</p>
+<p>但要做maker却要满足两个条件：挂单，被动成交，且挂单的时间要比对手方早，才叫maker。</p>
+<p><strong>仍然以上图为例：</strong></p>
+<p>假设我们想要买入EOS，想快点买入，又不想吃单交易。那么我们以买一同样的价格10.63挂单。</p>
+<p>价格迅速波动到10.63，卖方也有挂单10.63。那么双方价格对上，迅速成交。这时候的成交，如果我们挂的单比卖方早，那么我们为maker，对方为taker。</p>
+<p><strong>为什么要做这样的区分呢?</strong></p>
+<p>因为在一些平台，maker不需要支付交易费，还能赚取交易费！taker则总是要收取费用。</p>
+<h2 id="交易手续费与交割手续费有什么不同呢">交易手续费与交割手续费有什么不同呢?</h2>
+<blockquote>
+<p>交易手续费：买入成交、卖出成交涉及的费用。都是现货交易，就是我们普通的买卖。</p>
+</blockquote>
+<blockquote>
+<p>交割手续费：通常是在期货交易里才有，也有平台称为“合约交易”(一般都有杠杆操作)。</p>
+</blockquote>
+<p>建议大伙都别碰这类超高风险的交易，也就没必要关注其费率问题了。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><p>参考链接1：https://www.528btc.com/college/58402.html</p></li>
+<li><p>参考链接2：<a href="http://www.wildml.com/2018/02/introduction-to-learning-to-trade-with-reinforcement-learning/">Introduction to Learning to Trade with Reinforcement Learning</a></p></li>
+<li><p>参考链接3: https://github.com/Rachnog/Deep-Trading</p></li>
+</ul>
+<h2 id="相关论文">相关论文</h2>
+<ul>
+<li>A Deep Reinforcement Learning Framework for the Financial Portfolio Management Problem 【<a href="https://arxiv.org/abs/1706.10059">Paper</a>】 【<a href="https://github.com/ZhengyaoJiang/PGPortfolio">Code</a>】</li>
+</ul>
+]]></content>
+      <categories>
+        <category>quick guide</category>
+      </categories>
+      <tags>
+        <tag>basic reference</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cheat Sheet for Tech Basics</title>
+    <url>/2021/03/25/Cheat_Sheet_for_Tech_Basics/</url>
+    <content><![CDATA[<h1 id="cheat-sheet-to-help">Cheat Sheet to Help</h1>
+<blockquote>
+<p><a href="https://github.com/stefan-jansen/python-algorithms/blob/master/The%20Technical%20Interview%20Cheat%20Sheet.md">Reference</a></p>
+</blockquote>
+<p>This list is meant to be a both a quick guide <span id="more"></span>and reference for further research into these topics. It's basically a summary of that comp sci course you never took or forgot about, so there's no way it can cover everything in depth.</p>
+<h2 id="data-structure-basics">Data Structure Basics</h2>
+<h3 id="array"><strong>Array</strong></h3>
+<h4 id="definition">Definition:</h4>
+<ul>
+<li>Stores data elements based on an sequential, most commonly 0 based, index.</li>
+<li>Based on <a href="http://en.wikipedia.org/wiki/Tuple">tuples</a> from set theory.</li>
+<li>They are one of the oldest, most commonly used data structures.</li>
+</ul>
+<h4 id="what-you-need-to-know">What you need to know:</h4>
+<ul>
+<li>Optimal for indexing; bad at searching, inserting, and deleting (except at the end).</li>
+<li><strong>Linear arrays</strong>, or one dimensional arrays, are the most basic.
+<ul>
+<li>Are static in size, meaning that they are declared with a fixed size.</li>
+</ul></li>
+<li><strong>Dynamic arrays</strong> are like one dimensional arrays, but have reserved space for additional elements.
+<ul>
+<li>If a dynamic array is full, it copies it's contents to a larger array.</li>
+</ul></li>
+<li><strong>Two dimensional arrays</strong> have x and y indices like a grid or nested arrays.</li>
+</ul>
+<h4 id="big-o-efficiency">Big O efficiency:</h4>
+<ul>
+<li>Indexing: Linear array: O(1), Dynamic array: O(1)</li>
+<li>Search: Linear array: O(n), Dynamic array: O(n)</li>
+<li>Optimized Search: Linear array: O(log n), Dynamic array: O(log n)</li>
+<li>Insertion: Linear array: n/a Dynamic array: O(n)</li>
+</ul>
+<h3 id="linked-list"><strong>Linked List</strong></h3>
+<h4 id="definition-1">Definition:</h4>
+<ul>
+<li>Stores data with <strong>nodes</strong> that point to other nodes.
+<ul>
+<li>Nodes, at its most basic it has one datum and one reference (another node).</li>
+<li>A linked list <em>chains</em> nodes together by pointing one node's reference towards another node.</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-1">What you need to know:</h4>
+<ul>
+<li>Designed to optimize insertion and deletion, slow at indexing and searching.</li>
+<li><strong>Doubly linked list</strong> has nodes that reference the previous node.</li>
+<li><strong>Circularly linked list</strong> is simple linked list whose <strong>tail</strong>, the last node, references the <strong>head</strong>, the first node.</li>
+<li><strong>Stack</strong>, commonly implemented with linked lists but can be made from arrays too.
+<ul>
+<li>Stacks are <strong>last in, first out</strong> (LIFO) data structures.</li>
+<li>Made with a linked list by having the head be the only place for insertion and removal.</li>
+</ul></li>
+<li><strong>Queues</strong>, too can be implemented with a linked list or an array.
+<ul>
+<li>Queues are a <strong>first in, first out</strong> (FIFO) data structure.</li>
+<li>Made with a doubly linked list that only removes from head and adds to tail.</li>
+</ul></li>
+</ul>
+<h4 id="big-o-efficiency-1">Big O efficiency:</h4>
+<ul>
+<li>Indexing: Linked Lists: O(n)</li>
+<li>Search: Linked Lists: O(n)</li>
+<li>Optimized Search: Linked Lists: O(n)</li>
+<li>Insertion: Linked Lists: O(1)</li>
+</ul>
+<h3 id="hash-table-or-hash-map"><strong>Hash Table or Hash Map</strong></h3>
+<h4 id="definition-2">Definition:</h4>
+<ul>
+<li>Stores data with key value pairs.</li>
+<li><strong>Hash functions</strong> accept a key and return an output unique only to that specific key.
+<ul>
+<li>This is known as <strong>hashing</strong>, which is the concept that an input and an output have a one-to-one correspondence to map information.</li>
+<li>Hash functions return a unique address in memory for that data.</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-2">What you need to know:</h4>
+<ul>
+<li>Designed to optimize searching, insertion, and deletion.</li>
+<li><strong>Hash collisions</strong> are when a hash function returns the same output for two distinct outputs.
+<ul>
+<li>All hash functions have this problem.</li>
+<li>This is often accommodated for by having the hash tables be very large.</li>
+</ul></li>
+<li>Hashes are important for associative arrays and database indexing.</li>
+</ul>
+<h4 id="big-o-efficiency-2">Big O efficiency:</h4>
+<ul>
+<li>Indexing: Hash Tables: O(1)</li>
+<li>Search: Hash Tables: O(1)</li>
+<li>Insertion: Hash Tables: O(1)</li>
+</ul>
+<h3 id="binary-tree"><strong>Binary Tree</strong></h3>
+<h4 id="definition-3">Definition:</h4>
+<ul>
+<li>Is a tree like data structure where every node has at most two children.
+<ul>
+<li>There is one left and right child node.</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-3">What you need to know:</h4>
+<ul>
+<li>Designed to optimize searching and sorting.</li>
+<li>A <strong>degenerate tree</strong> is an unbalanced tree, which if entirely one-sided is a essentially a linked list.</li>
+<li>They are comparably simple to implement than other data structures.</li>
+<li>Used to make <strong>binary search trees</strong>.
+<ul>
+<li>A binary tree that uses comparable keys to assign which direction a child is.</li>
+<li>Left child has a key smaller than it's parent node.</li>
+<li>Right child has a key greater than it's parent node.</li>
+<li>There can be no duplicate node.</li>
+<li>Because of the above it is more likely to be used as a data structure than a binary tree.</li>
+</ul></li>
+</ul>
+<h4 id="big-o-efficiency-3">Big O efficiency:</h4>
+<ul>
+<li>Indexing: Binary Search Tree: O(log n)</li>
+<li>Search: Binary Search Tree: O(log n)</li>
+<li>Insertion: Binary Search Tree: O(log n)</li>
+</ul>
+<h2 id="search-basics">Search Basics</h2>
+<h3 id="breadth-first-search"><strong>Breadth First Search</strong></h3>
+<h4 id="definition-4">Definition:</h4>
+<ul>
+<li>An algorithm that searches a tree (or graph) by searching levels of the tree first, starting at the root.
+<ul>
+<li>It finds every node on the same level, most often moving left to right.</li>
+<li>While doing this it tracks the children nodes of the nodes on the current level.</li>
+<li>When finished examining a level it moves to the left most node on the next level.</li>
+<li>The bottom-right most node is evaluated last (the node that is deepest and is farthest right of it's level).</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-4">What you need to know:</h4>
+<ul>
+<li>Optimal for searching a tree that is wider than it is deep.</li>
+<li>Uses a queue to store information about the tree while it traverses a tree.
+<ul>
+<li>Because it uses a queue it is more memory intensive than <strong>depth first search</strong>.</li>
+<li>The queue uses more memory because it needs to stores pointers</li>
+</ul></li>
+</ul>
+<h4 id="big-o-efficiency-4">Big O efficiency:</h4>
+<ul>
+<li>Search: Breadth First Search: O(|E| + |V|)</li>
+<li>E is number of edges</li>
+<li>V is number of vertices</li>
+</ul>
+<h3 id="depth-first-search"><strong>Depth First Search</strong></h3>
+<h4 id="definition-5">Definition:</h4>
+<ul>
+<li>An algorithm that searches a tree (or graph) by searching depth of the tree first, starting at the root.
+<ul>
+<li>It traverses left down a tree until it cannot go further.</li>
+<li>Once it reaches the end of a branch it traverses back up trying the right child of nodes on that branch, and if possible left from the right children.</li>
+<li>When finished examining a branch it moves to the node right of the root then tries to go left on all it's children until it reaches the bottom.</li>
+<li>The right most node is evaluated last (the node that is right of all it's ancestors).</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-5">What you need to know:</h4>
+<ul>
+<li>Optimal for searching a tree that is deeper than it is wide.</li>
+<li>Uses a stack to push nodes onto.
+<ul>
+<li>Because a stack is LIFO it does not need to keep track of the nodes pointers and is therefore less memory intensive than breadth first search.</li>
+<li>Once it cannot go further left it begins evaluating the stack.</li>
+</ul></li>
+</ul>
+<h4 id="big-o-efficiency-5">Big O efficiency:</h4>
+<ul>
+<li>Search: Depth First Search: O(|E| + |V|)</li>
+<li>E is number of edges</li>
+<li>V is number of vertices</li>
+</ul>
+<h4 id="breadth-first-search-vs.-depth-first-search">Breadth First Search Vs. Depth First Search</h4>
+<ul>
+<li>The simple answer to this question is that it depends on the size and shape of the tree.
+<ul>
+<li>For wide, shallow trees use Breadth First Search</li>
+<li>For deep, narrow trees use Depth First Search</li>
+</ul></li>
+</ul>
+<h4 id="nuances">Nuances:</h4>
+<ul>
+<li>Because BFS uses queues to store information about the nodes and its children, it could use more memory than is available on your computer. (But you probably won't have to worry about this.)</li>
+<li>If using a DFS on a tree that is very deep you might go unnecessarily deep in the search. See <a href="http://xkcd.com/761/">xkcd</a> for more information.</li>
+<li>Breadth First Search tends to be a looping algorithm.</li>
+<li>Depth First Search tends to be a recursive algorithm.</li>
+</ul>
+<h2 id="efficient-sorting-basics">Efficient Sorting Basics</h2>
+<h3 id="merge-sort"><strong>Merge Sort</strong></h3>
+<h4 id="definition-6">Definition:</h4>
+<ul>
+<li>A comparison based sorting algorithm
+<ul>
+<li>Divides entire dataset into groups of at most two.</li>
+<li>Compares each number one at a time, moving the smallest number to left of the pair.</li>
+<li>Once all pairs sorted it then compares left most elements of the two leftmost pairs creating a sorted group of four with the smallest numbers on the left and the largest ones on the right.</li>
+<li>This process is repeated until there is only one set.</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-6">What you need to know:</h4>
+<ul>
+<li>This is one of the most basic sorting algorithms.</li>
+<li>Know that it divides all the data into as small possible sets then compares them.</li>
+</ul>
+<h4 id="big-o-efficiency-6">Big O efficiency:</h4>
+<ul>
+<li>Best Case Sort: Merge Sort: O(n)</li>
+<li>Average Case Sort: Merge Sort: O(n log n)</li>
+<li>Worst Case Sort: Merge Sort: O(n log n)</li>
+</ul>
+<h3 id="quicksort"><strong>Quicksort</strong></h3>
+<h4 id="definition-7">Definition:</h4>
+<ul>
+<li>A comparison based sorting algorithm
+<ul>
+<li>Divides entire dataset in half by selecting the average element and putting all smaller elements to the left of the average.</li>
+<li>It repeats this process on the left side until it is comparing only two elements at which point the left side is sorted.</li>
+<li>When the left side is finished sorting it performs the same operation on the right side.</li>
+</ul></li>
+<li>Computer architecture favors the quicksort process.</li>
+</ul>
+<h4 id="what-you-need-to-know-7">What you need to know:</h4>
+<ul>
+<li>While it has the same Big O as (or worse in some cases) many other sorting algorithms it is often faster in practice than many other sorting algorithms, such as merge sort.</li>
+<li>Know that it halves the data set by the average continuously until all the information is sorted.</li>
+</ul>
+<h4 id="big-o-efficiency-7">Big O efficiency:</h4>
+<ul>
+<li>Best Case Sort: Merge Sort: O(n)</li>
+<li>Average Case Sort: Merge Sort: O(n log n)</li>
+<li>Worst Case Sort: Merge Sort: O(n^2)</li>
+</ul>
+<h3 id="bubble-sort"><strong>Bubble Sort</strong></h3>
+<h4 id="definition-8">Definition:</h4>
+<ul>
+<li>A comparison based sorting algorithm
+<ul>
+<li>It iterates left to right comparing every couplet, moving the smaller element to the left.</li>
+<li>It repeats this process until it no longer moves and element to the left.</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-8">What you need to know:</h4>
+<ul>
+<li>While it is very simple to implement, it is the least efficient of these three sorting methods.</li>
+<li>Know that it moves one space to the right comparing two elements at a time and moving the smaller on to left.</li>
+</ul>
+<h4 id="big-o-efficiency-8">Big O efficiency:</h4>
+<ul>
+<li>Best Case Sort: Merge Sort: O(n)</li>
+<li>Average Case Sort: Merge Sort: O(n^2)</li>
+<li>Worst Case Sort: Merge Sort: O(n^2)</li>
+</ul>
+<h4 id="merge-sort-vs.-quicksort">Merge Sort Vs. Quicksort</h4>
+<ul>
+<li>Quicksort is likely faster in practice.</li>
+<li>Merge Sort divides the set into the smallest possible groups immediately then reconstructs the incrementally as it sorts the groupings.</li>
+<li>Quicksort continually divides the set by the average, until the set is recursively sorted.</li>
+</ul>
+<h2 id="basic-types-of-algorithms">Basic Types of Algorithms</h2>
+<h3 id="recursive-algorithms"><strong>Recursive Algorithms</strong></h3>
+<h4 id="definition-9">Definition:</h4>
+<ul>
+<li>An algorithm that calls itself in its definition.
+<ul>
+<li><strong>Recursive case</strong> a conditional statement that is used to trigger the recursion.</li>
+<li><strong>Base case</strong> a conditional statement that is used to break the recursion.</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-9">What you need to know:</h4>
+<ul>
+<li><strong>Stack level too deep</strong> and <strong>stack overflow</strong>.
+<ul>
+<li>If you've seen either of these from a recursive algorithm, you messed up.</li>
+<li>It means that your base case was never triggered because it was faulty or the problem was so massive you ran out of RAM before reaching it.</li>
+<li>Knowing whether or not you will reach a base case is integral to correctly using recursion.</li>
+<li>Often used in Depth First Search</li>
+</ul></li>
+</ul>
+<h3 id="iterative-algorithms"><strong>Iterative Algorithms</strong></h3>
+<h4 id="definition-10">Definition:</h4>
+<ul>
+<li>An algorithm that is called repeatedly but for a finite number of times, each time being a single iteration.
+<ul>
+<li>Often used to move incrementally through a data set.</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-10">What you need to know:</h4>
+<ul>
+<li>Generally you will see iteration as loops, for, while, and until statements.</li>
+<li>Think of iteration as moving one at a time through a set.</li>
+<li>Often used to move through an array.</li>
+</ul>
+<h4 id="recursion-vs.-iteration">Recursion Vs. Iteration</h4>
+<ul>
+<li>The differences between recursion and iteration can be confusing to distinguish since both can be used to implement the other. But know that,
+<ul>
+<li>Recursion is, usually, more expressive and easier to implement.</li>
+<li>Iteration uses less memory.</li>
+</ul></li>
+<li><strong>Functional languages</strong> tend to use recursion. (i.e. Haskell)</li>
+<li><strong>Imperative languages</strong> tend to use iteration. (i.e. Ruby)</li>
+<li>Check out this <a href="http://stackoverflow.com/questions/19794739/what-is-the-difference-between-iteration-and-recursion">Stack Overflow post</a> for more info.</li>
+</ul>
+<h4 id="pseudo-code-of-moving-through-an-array-this-is-why-iteration-is-used-for-this">Pseudo Code of Moving Through an Array (this is why iteration is used for this)</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Recursion                         | Iteration</span><br><span class="line">----------------------------------|----------------------------------</span><br><span class="line">recursive method (array, n)       | iterative method (array)</span><br><span class="line">  if array[n] is not nil          |   for n from 0 to size of array</span><br><span class="line">    print array[n]                |     print(array[n])</span><br><span class="line">    recursive method(array, n+1)  |</span><br><span class="line">  else                            |</span><br><span class="line">    exit loop                     |</span><br></pre></td></tr></table></figure>
+<h3 id="greedy-algorithm"><strong>Greedy Algorithm</strong></h3>
+<h4 id="definition-11">Definition:</h4>
+<ul>
+<li>An algorithm that, while executing, selects only the information that meets a certain criteria.</li>
+<li>The general five components, taken from <a href="http://en.wikipedia.org/wiki/Greedy_algorithm#Specifics">Wikipedia</a>:
+<ul>
+<li>A candidate set, from which a solution is created.</li>
+<li>A selection function, which chooses the best candidate to be added to the solution.</li>
+<li>A feasibility function, that is used to determine if a candidate can be used to contribute to a solution.</li>
+<li>An objective function, which assigns a value to a solution, or a partial solution.</li>
+<li>A solution function, which will indicate when we have discovered a complete solution.</li>
+</ul></li>
+</ul>
+<h4 id="what-you-need-to-know-11">What you need to know:</h4>
+<ul>
+<li>Used to find the optimal solution for a given problem.</li>
+<li>Generally used on sets of data where only a small proportion of the information evaluated meets the desired result.</li>
+<li>Often a greedy algorithm can help reduce the Big O of an algorithm.</li>
+</ul>
+<h4 id="pseudo-code-of-a-greedy-algorithm-to-find-largest-difference-of-any-two-numbers-in-an-array.">Pseudo Code of a Greedy Algorithm to Find Largest Difference of any Two Numbers in an Array.</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">greedy algorithm (array)</span><br><span class="line">  var largest difference &#x3D; 0</span><br><span class="line">  var new difference &#x3D; find next difference (array[n], array[n+1])</span><br><span class="line">  largest difference &#x3D; new difference if new difference is &gt; largest difference</span><br><span class="line">  repeat above two steps until all differences have been found</span><br><span class="line">  return largest difference</span><br></pre></td></tr></table></figure>
+<p>This algorithm never needed to compare all the differences to one another, saving it an entire iteration.</p>
+]]></content>
+      <categories>
+        <category>quick guide</category>
+      </categories>
+      <tags>
+        <tag>basic reference</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ClickHouse常用查询语句demo</title>
+    <url>/2021/03/22/ClickHouse/</url>
+    <content><![CDATA[<h1 id="clickhouse">ClickHouse</h1>
+<span id="more"></span>
+<blockquote>
+<p>ClickHouse中常用的查询语句语法，仅供参考，详见官方<a href="https://clickhouse.tech/docs/en/">参考文档</a>。</p>
+</blockquote>
+<h2 id="时间操作相关">时间操作相关</h2>
+<ul>
+<li><p>时间戳 to 日期时间 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> toDateTime(<span class="number">1604457372</span>);      <span class="comment">-- 2020-11-04 02:36:12</span></span><br><span class="line"><span class="keyword">select</span> toDateTime64(<span class="number">1604188800</span>, <span class="number">3</span>, <span class="string">&#x27;Asia/Shanghai&#x27;</span>);    <span class="comment">-- 2020-11-01 08:00:00.000</span></span><br><span class="line"><span class="keyword">select</span> toDateTime64(<span class="number">1604457372</span>, <span class="number">3</span>, <span class="string">&#x27;Asia/Shanghai&#x27;</span>);    <span class="comment">-- 2020-11-04 10:36:12.000</span></span><br><span class="line"><span class="keyword">select</span> toDateTime64(<span class="number">1604188800</span> <span class="operator">-</span> <span class="number">3600</span><span class="operator">*</span><span class="number">24</span><span class="operator">*</span><span class="number">7</span>, <span class="number">3</span>, <span class="string">&#x27;Asia/Shanghai&#x27;</span>);    <span class="comment">-- 2020-10-25 08:00:00.000</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>日期时间 to 时间戳 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> toUnixTimestamp(toDateTime(<span class="string">&#x27;2020-11-01 00:00:00&#x27;</span>));  <span class="comment">-- 1604188800</span></span><br><span class="line"><span class="keyword">select</span> toUnixTimestamp(now());      <span class="comment">-- 1604457372</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>字符串 to 时间格式 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> toDate(<span class="string">&#x27;2020-11-01&#x27;</span>) <span class="keyword">as</span> <span class="type">date</span>;    <span class="comment">-- 2020-11-01</span></span><br><span class="line"><span class="comment">-- datetime64时，需要提供时分秒信息，否则转换的结果不正确</span></span><br><span class="line"><span class="keyword">select</span> toDateTime64(<span class="string">&#x27;2020-11-01&#x27;</span>, <span class="number">3</span>, <span class="string">&#x27;Asia/Shanghai&#x27;</span>) <span class="keyword">as</span> date_time64;   <span class="comment">-- 0000-00-00 00:00:00.000</span></span><br><span class="line"><span class="keyword">select</span> toDateTime64(<span class="string">&#x27;2020-11-01 00:01:02&#x27;</span>, <span class="number">3</span>, <span class="string">&#x27;Asia/Shanghai&#x27;</span>) <span class="keyword">as</span> date_time64;  <span class="comment">-- 2020-11-01 00:01:02.000</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>数值 to 时间格式 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> toDate(parseDateTimeBestEffort(toString(<span class="number">20201201</span>)));     <span class="comment">-- 2020-12-01</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>字符串 to 日期时间 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> toDateTime(<span class="string">&#x27;2020-11-01 00:01:02&#x27;</span>) <span class="keyword">as</span> date_time;    <span class="comment">-- 2020-11-01 00:01:02</span></span><br><span class="line"><span class="keyword">select</span> toDateTime(toDate(<span class="string">&#x27;2020-11-01&#x27;</span>)) <span class="keyword">as</span> date_time;       <span class="comment">-- 2020-11-01 00:00:00</span></span><br><span class="line"><span class="keyword">select</span> toStartOfDay(toDate(<span class="string">&#x27;2020-11-01&#x27;</span>)) <span class="keyword">as</span> start_day_time;    <span class="comment">-- 2020-11-01 00:00:00</span></span><br><span class="line"><span class="keyword">select</span> toDateTime64(toDate(<span class="string">&#x27;2020-11-01&#x27;</span>), <span class="number">3</span>, <span class="string">&#x27;Asia/Shanghai&#x27;</span>) <span class="keyword">as</span> date_time64;   <span class="comment">-- 2020-11-01 08:00:00.000</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>日期时间数值运算 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> toDateTime(subtractDays(toStartOfDay(toDate(<span class="string">&#x27;2020-11-01&#x27;</span>)), <span class="number">7</span>));   <span class="comment">-- 2020-10-25</span></span><br><span class="line"><span class="keyword">select</span> addMinutes(toStartOfInterval(now(), <span class="type">interval</span> <span class="number">1</span> <span class="keyword">minute</span>), <span class="number">1</span>);        <span class="comment">-- 在当前时间基础上增加一分钟</span></span><br><span class="line"><span class="keyword">select</span> addMinutes(toStartOfInterval(now(), <span class="type">interval</span> <span class="number">1</span> <span class="keyword">minute</span>), <span class="number">-1</span>);     <span class="comment">-- 在当前时间基础上减少一分钟</span></span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="统计分析">统计分析</h2>
+<ul>
+<li><p>测试聚合函数 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 测试聚合函数</span></span><br><span class="line"><span class="keyword">select</span> median(<span class="operator">*</span>) <span class="keyword">from</span> <span class="keyword">values</span>(<span class="string">&#x27;data Int32&#x27;</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">400</span>, <span class="number">5</span>);    <span class="comment">-- 3</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">avg</span>(<span class="operator">*</span>) <span class="keyword">from</span> <span class="keyword">values</span>(<span class="string">&#x27;data Int32&#x27;</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">400</span>, <span class="number">5</span>);       <span class="comment">-- 82.2</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>绘制统计条形图demo <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">       toStartOfInterval(start_time, <span class="type">interval</span> <span class="number">120</span> <span class="keyword">minute</span>) <span class="keyword">as</span> slot,</span><br><span class="line">       <span class="built_in">count</span>() <span class="keyword">as</span> cnt,</span><br><span class="line">       bar(cnt, <span class="number">0</span>, <span class="number">1000</span>, <span class="number">20</span>) <span class="keyword">as</span> bar</span><br><span class="line"><span class="keyword">from</span> dw_haozan_lives.haozan_live_attributes</span><br><span class="line"><span class="keyword">where</span> start_time <span class="operator">&gt;</span> subtractDays(now(), <span class="number">1</span>)</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> slot</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> slot;</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="其他">其他</h2>
+<ul>
+<li><p>生成数字序列 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> numbers(<span class="number">6</span>);</span><br><span class="line"><span class="keyword">select</span> number <span class="keyword">from</span> numbers(<span class="number">6</span>);</span><br></pre></td></tr></table></figure></p></li>
+<li><p>日期函数测试 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 日期函数测试</span></span><br><span class="line"><span class="keyword">select</span> <span class="type">interval</span>(<span class="number">6</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>);    <span class="comment">-- 1</span></span><br><span class="line"><span class="keyword">select</span> <span class="type">interval</span>(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>);    <span class="comment">-- 0</span></span><br><span class="line"><span class="keyword">select</span> now() <span class="operator">-</span> <span class="type">interval</span> <span class="number">24</span> <span class="keyword">hour</span>;    <span class="comment">-- 2020-10-15 12:17:07</span></span><br><span class="line"><span class="keyword">select</span> now() <span class="operator">-</span> <span class="type">interval</span> <span class="number">10</span> <span class="keyword">minute</span>;  <span class="comment">-- 2020-10-16 12:07:17</span></span><br><span class="line"><span class="keyword">select</span> sysdate();                                   <span class="comment">-- 2020-10-16 12:17:29</span></span><br><span class="line"><span class="keyword">select</span> unix_timestamp(sysdate());                   <span class="comment">-- 1602821887</span></span><br><span class="line"><span class="keyword">select</span> unix_timestamp(<span class="built_in">cast</span>(sysdate() <span class="keyword">as</span> <span class="type">date</span>));     <span class="comment">-- 1602777600</span></span><br><span class="line"><span class="keyword">select</span> unix_timestamp(<span class="built_in">cast</span>(sysdate() <span class="keyword">as</span> datetime)); <span class="comment">-- 1602821907</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(unix_timestamp(<span class="built_in">cast</span>(sysdate() <span class="keyword">as</span> <span class="type">date</span>)));      <span class="comment">-- 2020-10-16 00:00:00</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(unix_timestamp(<span class="built_in">cast</span>(sysdate() <span class="keyword">as</span> datetime)));  <span class="comment">-- 2020-10-16 12:18:46</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(unix_timestamp(<span class="built_in">cast</span>(sysdate() <span class="keyword">as</span> datetime))) <span class="operator">+</span> <span class="type">interval</span> <span class="number">1</span> <span class="keyword">day</span>;  <span class="comment">-- 2020-10-17 12:19:58</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(unix_timestamp(<span class="built_in">cast</span>(sysdate() <span class="keyword">as</span> datetime))) <span class="operator">-</span> <span class="type">interval</span> <span class="number">1</span> <span class="keyword">day</span>;  <span class="comment">-- 2020-10-15 12:20:29</span></span><br></pre></td></tr></table></figure></p></li>
+</ul>
+]]></content>
+      <categories>
+        <category>sql</category>
+      </categories>
+      <tags>
+        <tag>clickhouse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git日常使用记录</title>
+    <url>/2021/03/23/Git%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="git">Git</h1>
+<blockquote>
+<p>记录git的常用操作、流程、数据恢复等。 <span id="more"></span></p>
+</blockquote>
+<h2 id="常用">01. 常用</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看当前git状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看提交日志，同时可查看是否包含upstream/master</span></span><br><span class="line">git log --pretty=oneline --abbrev-commit --graph</span><br><span class="line"><span class="meta">#</span><span class="bash"> 同步fork的源仓库，增加upstream源</span></span><br><span class="line">git remote add upstream git@项目地址/项目名称.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> 提取数据</span></span><br><span class="line">git fetch upstream</span><br><span class="line"><span class="meta">#</span><span class="bash"> 合并到本地分支</span></span><br><span class="line">git merge upstream/master</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用fetch再merge，会在本地产生一个新的提交</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 远程仓库更新时，所以一般使用以下命令同步源【同样，如果不加--rebase参数，也会在本地产生一个新的提交】</span></span><br><span class="line">git pull --rebase upstream mast</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git reset命令可以将仓库区中的HEAD指针指向之前的commit id上,不同的参数会使工作区、stage区出现不一样的变化</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --hard 目前的更改及之前的提交都会删除，工作区和stage区的内容同步到仓库区HEAD指针所指向的commit id处</span></span><br><span class="line">git reset --hard c5e4a0340d48b9f3bf71d774a85b0bfe9d7d98d9</span><br><span class="line"><span class="meta">#</span><span class="bash"> --soft 目前的更改会保留在工作区，之前已提交的内容的差异会在stage区，即to be commited状态</span></span><br><span class="line">git reset --soft bba88e9f6c9e75d90ad00551f0d27d1bab915aeb</span><br><span class="line"><span class="meta">#</span><span class="bash"> --mixed 目前的更改及之前的提交会保留在工作区，stage会清空</span></span><br><span class="line">git reset --mixed f74df8fd863458e5c3e3dd428ebf0f5bceab1efa</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git restore命令可以撤销更改; 如果已经提交到stage区，可以按照以下步骤撤销更改</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --staged 撤销stage区的更改，即撤销 git add xx 的操作</span></span><br><span class="line">git restore --staged requirement.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> --worktree 撤销工作区的更改，即撤销本地对 requirement.txt 的修改操作</span></span><br><span class="line">git restore --worktree requirement.txt</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 本地有修改还未提交时，如果这时需要pull uptream，可以先使用git stash将当前状态保存至缓存区【与stage区不同？】</span></span><br><span class="line">git stash</span><br><span class="line">git pull --rebase upstream master</span><br><span class="line">git stash pop 		# 此时若出现conflict，可以结合reset、restore命令进行修改</span><br><span class="line">git stash clear		# 之后解决conflict之后，可以清除缓存区内容</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除本地分支</span></span><br><span class="line">git branch -d [branch_name]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除远程分支</span></span><br><span class="line">git push origin --delete [branch_name]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 合并dev分支到master分支</span></span><br><span class="line">git pull origin dev</span><br><span class="line">git checkout master</span><br><span class="line">git merge dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当提交代码后，又做了微小改动，但不想再额外增加comment信息时，执行以下命令，再推送到远程</span></span><br><span class="line">git commit --amend --no-edit</span><br><span class="line">git pull --rebase upstream master</span><br><span class="line">git push -f origin dev</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="流程">02. 流程</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 0.先rebase下代码【同理，本地写代码前，最好先rebase下】</span></span><br><span class="line">git pull --rebase upstream master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 有conflict的情况；</span></span><br><span class="line"><span class="comment"># 1.1 先手动解决冲突</span></span><br><span class="line">git rebase --<span class="keyword">continue</span></span><br><span class="line"><span class="comment"># 1.2 后push，在网页上查看change状态是否正确</span></span><br><span class="line">git push -f origin dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 没有conflict的情况</span></span><br><span class="line"><span class="comment"># 2.1 直接push</span></span><br><span class="line">git push origin dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.其他</span></span><br><span class="line"><span class="comment"># 3.1 当本地有全新的更改时，且upstream上没有对应的代码文件，直接pull不会出错。</span></span><br></pre></td></tr></table></figure>
+<h2 id="x.-数据恢复">0x. 数据恢复</h2>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/5788037/recover-from-git-reset-hard">参考链接</a> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 本地新增了live_hot.py，修改了dataset.py。</span></span><br><span class="line"><span class="comment"># 执行了如下提交命令</span></span><br><span class="line">git add live_hot.py</span><br><span class="line">git commint -m <span class="string">&quot;xxxxxxxxx&quot;</span> <span class="comment"># 假如此时的commit id 是67165xxxxx</span></span><br><span class="line"><span class="comment"># 即只提交了一个更改。此时执行了如下危险命令(返回到提交前的一个版本)</span></span><br><span class="line">git reset --hard xxxxxxx</span><br><span class="line"><span class="comment"># 此时本地的新增和本地的修改皆不见了，想要恢复时，有博客说使用如下命令查看到之前的commit id 67165xxxxx</span></span><br><span class="line">git reflog</span><br><span class="line"><span class="comment"># 于是不经过思考，执行了如下命令</span></span><br><span class="line">git reset --hard 67165xxxxx</span><br><span class="line"><span class="comment"># 文件是恢复了，但只恢复了一半。之前dateset.py文件没有恢复。</span></span><br><span class="line"><span class="comment"># 于是尝试使用 git reset --soft xxxxx（其他commit id）恢复，未果</span></span><br><span class="line"><span class="comment"># 最终，使用了如下命令恢复了数据</span></span><br><span class="line">git fsck --lost-found</span><br><span class="line"><span class="built_in">cd</span> project_path/.git/lost-found/other</span><br><span class="line"><span class="comment"># 该目录下有很多blobs，使用git show查看每一个文件，最终在如下文件中找到了丢失的数据</span></span><br><span class="line">git show 1e946</span><br></pre></td></tr></table></figure></li>
+<li>更新用户名</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>参考链接：</strong><a href="https://docs.github.com/en/github/using-git/changing-a-remotes-url">Changing a remote's URL</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 更改用户名前</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta">#</span><span class="bash"> origin	git@github.com:pick-up-a-drop-of-water/Back2Zero.git (fetch)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> origin	git@github.com:pick-up-a-drop-of-water/Back2Zero.git (push)</span></span><br><span class="line">git remote set-url origin git@github.com:simwiki/Back2Zero.git</span><br><span class="line"><span class="meta">#</span><span class="bash"> 更改用户名后</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta">#</span><span class="bash"> origin	git@github.com:simwiki/Back2Zero.git (fetch)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> origin	git@github.com:simwiki/Back2Zero.git (push)</span></span><br></pre></td></tr></table></figure>
+<p>分割线</p>
+<hr />
+<h2 id="本地库操作">1. 本地库操作：</h2>
+<ul>
+<li>git status 查看工作区的状态</li>
+<li>git diff 查看被修改的内容</li>
+<li>git log 查看提交的历史记录
+<ul>
+<li>如果嫌显示的太多，看得眼花缭乱的，可以试试加上git log --pretty=oneline</li>
+</ul></li>
+<li>git reset 版本回退、清空暂存区的内容
+<ul>
+<li>git reset --hard HEAD^ （一个尖括号代表回退一次上个版本，回退100次可以用，HEAD~100）</li>
+<li>git reset --hard commitId （commitId就是你commit之后那串SHA1加密后的串，使用comitId可以跳到你任何你想去的版本）</li>
+<li>git reflog （可以查看每次的commitId）</li>
+<li>git reset HEAD filename （把提交到暂存区的内容清空掉，然后在使用git checkout -- filename 清空工作区）</li>
+</ul></li>
+<li>git rm filename 在git版本库上删除这个文件</li>
+</ul>
+<h2 id="远程仓库操作">2. 远程仓库操作：</h2>
+<ul>
+<li>git remote add origin git@git名:路径/远程仓库名.git （关联一个远程库） 例子：git remote add origin git@github.com:michaelliao/learngit.git</li>
+<li>git push -u origin master （第一次推送master分支的所有内容，要加-u参数）</li>
+<li>git push origin master （此后，每次本地提交后，可以用这个命令推送最新修改）</li>
+<li>git checkout -b dev （创建并切换到dev分支）
+<ul>
+<li>这个其实是两命令合在一起的快速写法</li>
+<li>git branch dev （创建dev分支）</li>
+<li>git checkout dev （切换到dev分支）</li>
+</ul></li>
+<li>git switch -c <name> （创建并切换到dev分支，这里是-c create）</li>
+<li>git branch （查看所有分支，当前分支前面会标一个*号。）</li>
+<li>git merge （用于合并指定分支到当前分支）</li>
+<li>git merge dev （把dev分支的工作成果合并到master分支上，在master分支下运行</li>
+<li>git branch -d dev （删除dev分支）</li>
+<li>git merge --no-ff -m "merge with no-ff" dev （使用--no-ff合并可以回退到分支，fast-forward看不到被合并的分支。 因为采用这模式合并之后会多了一次commit，所以需要使用 -m "commit信息"）</li>
+<li>git remote -v （显示了可以抓取和推送的origin的地址。如果没有推送权限，就看不到push的地址。）</li>
+<li>git push origin master （把本地的master分支推送到origin远程仓库上）</li>
+<li>git push origin dev （如果要推送其他分支，比如dev，就改成这样）</li>
+<li>git rebase（把分叉的提交历史“整理”成一条直线，看上去更直观。缺点是本地的分叉提交已经被修改过）</li>
+</ul>
+<h2 id="合并冲突">3. 合并冲突：</h2>
+<ul>
+<li>git merge dev （会提示冲突）</li>
+<li>git status （查看冲突文件）
+<ul>
+<li>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容。 解决冲突就是把这些删除成你最终想要的样子</li>
+</ul></li>
+<li>git add index.php</li>
+<li>git commit -m "conflict fixed"</li>
+<li>git branch -d dev</li>
+<li>git log --graph （可以看到分支合并图）</li>
+<li>git log --graph --pretty=oneline --abbrev-commit （查看分支图，并且是区掉无用信息的）</li>
+</ul>
+<h2 id="修复bug">4. 修复BUG：</h2>
+<ul>
+<li>git stash （保存现场到当前分支。 ps：如果不保存，那么你切到别的分支区解决bug，工作区的修改也会带过去）</li>
+<li>git status （工作区如果是干净的，则代表保存了。 工作区没有被污染）</li>
+<li>git checkout master（确定要在哪个分支上修复bug，就切换到那个分支）</li>
+<li>git checkout -b issue-101 （创建并切换到新建的解决BUG的分支） 修复BUG文件， add .... commit ....</li>
+<li>git checkout master | git merge --no-ff -m "merged bug fix 101" issue-101 | git branch -d issue-101（修复完成后，切换到master分支，并完成合并，最后删除issue-101分支） 上面步骤修复完成， 现在回到dev分支恢复现场，继续工作</li>
+<li>git checkout dev （切换到之前保存现场的分支）</li>
+<li>git stash list （查看保存的现场信息）</li>
+<li>git stash pop （恢复现场）</li>
+<li>git stash apply stash@{0} （先用git stash list查看，然后恢复指定的stash）</li>
+<li>git cherry-pick 4c805e2 （在当前dev分支下，复制4c805e2 fix bug 101这个提交所做的修改。 注意：我们只想复制4c805e2 fix bug 101这个提交所做的修改，并不是把整个master分支merge过来。）</li>
+</ul>
+<h2 id="标签操作">5. 标签操作：</h2>
+<ul>
+<li>git tag <name> （创建一个标签）</li>
+<li>git tag （查看所有标签。注意，标签不是按时间顺序列出，而是按字母排序的）</li>
+<li>git tag v0.9 f52c633 （对特定的commitId打标签， git tag tagName commitId）</li>
+<li>git show <tagname> （查看单个标签的详细信息）</li>
+<li>git tag -a v0.1 -m "version 0.1 released" 1094adb （还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字）</li>
+<li>git tag -d v0.1 （删除标签）</li>
+<li>git push origin <tagname> （推送某个标签到远程）</li>
+<li>git push origin --tags （一次性推送全部尚未推送到远程的本地标签）</li>
+<li>git push origin :refs/tags/v0.9 （从远程删除）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux常用命令记录</title>
+    <url>/2021/03/12/Linux/</url>
+    <content><![CDATA[<h1 id="linux">Linux</h1>
+<span id="more"></span>
+<ul>
+<li><p>磁盘空间 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看系统整体磁盘使用情况</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看当前文件夹不同文件（夹）的使用情况</span></span><br><span class="line">du -sh *</span><br></pre></td></tr></table></figure></p></li>
+<li><p>crontab &gt;CentOS上配置cron任务时，应先cd到对应路径，再执行sh文件。 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># clean docker &amp; fetch data &amp; train model every 12 hours</span></span><br><span class="line">22 */12 * * * <span class="built_in">cd</span> /home/nice/brain/workspace/wangxinke/recommender/ &amp;&amp; sh ./pipeline.sh</span><br></pre></td></tr></table></figure></p></li>
+</ul>
+<h2 id="shell">shell</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> -e	<span class="comment"># fail and exit on any command erroring</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you know you are deleting files, you can check if it a file and then delete.</span></span><br><span class="line"><span class="built_in">test</span> -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span> &amp;&amp; rm -f <span class="string">&quot;<span class="variable">$file_name</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="传输文件">传输文件</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 传输mac下的hotlive文件夹至dev01下的data文件夹下</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以下命令是在dev01服务器上执行的</span></span><br><span class="line">sudo scp -r xk_wang@192.168.72.229:/Users/xk_wang/Desktop/recommender/data/hotlive data/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者使用wget + http.server的方式传输文件</span></span><br></pre></td></tr></table></figure>
+<h2 id="权限">权限</h2>
+<ul>
+<li>递归更改某目录下的文件和文件夹权限为最高权限</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod -R 777 log/hotlive/20210303/</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next主题支持Latex公式显示</title>
+    <url>/2021/04/26/NexT%E4%B8%BB%E9%A2%98%E6%94%AF%E6%8C%81Latex%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="支持latex公式显示">支持Latex公式显示</h2>
+<p>在本地Typora可以嵌入支持Latex语法的行内公式和行间公式，而直接复制markdown源文件到Hexo时却不支持Latex公式的显示。<span id="more"></span>主要原因还是Hexo默认的markdown渲染引擎不支持mathjax导致的。参考一些资料后，总是解决该问题。</p>
+<p><a href="https://blog.csdn.net/ALexander_Monster/article/details/105717091">参考链接1</a> <a href="https://dragon-liu.github.io/2019/04/26/blog6/">参考链接2</a></p>
+<h3 id="修改主题配置">1. 修改主题配置</h3>
+<p>在/themes/next/_config.yml中添加以下内容。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210426161218630.png" alt="" /><figcaption>image-20210426161218630</figcaption>
+</figure>
+<h3 id="安装markdown渲染引擎">2. 安装markdown渲染引擎</h3>
+<blockquote>
+<p>Hexo 默认的渲染引擎是hexo-renderer-marked，但是它不支持 mathjax。所以需要更换为支持mathjax的hexo-renderer-kramed引擎。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<h3 id="添加front-matter项">3. 添加front-matter项</h3>
+<p>在需要展示公式的markdown文本开头添加<code>mathjax: true</code>，如下图所示。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210426162313383.png" alt="" /><figcaption>image-20210426162313383</figcaption>
+</figure>
+<h3 id="部署页面">4. 部署页面</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 清除缓存文件(db.json)和已经生成的静态文件(public)</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="meta">#</span><span class="bash"> 生成网站静态文件到默认设置的public文件夹</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动本地服务器，用于预览主题，查看是否生效</span></span><br><span class="line">hexo s --debug</span><br><span class="line"><span class="meta">#</span><span class="bash"> 自动生成网站静态文件，并部署到设定的仓库</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>NexT主题配置</category>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next主题添加背景音乐</title>
+    <url>/2021/03/24/NexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/</url>
+    <content><![CDATA[<h1 id="背景音乐">背景音乐</h1>
+<p>博客页侧边栏和个人页面配置不同的背景音乐，效果如下图所示。<span id="more"></span></p>
+<figure class="half">
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324121745899.png" width = "80%" height = "50%"> <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324121627333.png" width = "80%" height = "50%">
+</figure>
+<h2 id="新增主题配置">1.新增主题配置</h2>
+<p>在/themes/next/_config.yml中添加一下内容，<strong>任何行插入皆可</strong>。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Netease music，以下链接是在网易云音乐中生成的外链，后文有介绍</span></span><br><span class="line"><span class="attr">netease_music:</span> <span class="string">//music.163.com/outchain/player?type=2&amp;id=35448922&amp;auto=1&amp;height=66</span></span><br></pre></td></tr></table></figure>
+<h2 id="新增layout模版内容">2.新增layout模版内容</h2>
+<p>在/themes/next/layout/_macro/sidebar.swig配置结果如下图所示。注意位置是放在<code>&#123;%- if display_toc %&#125;</code>之下。如果放在了其他位置，网易云音乐就不会出现在侧边栏了。</p>
+<h3 id="侧边栏配置">侧边栏配置</h3>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324120146719.png" alt="" /><figcaption>image-20210324120146719</figcaption>
+</figure>
+<p>图中涉及代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!--网易云音乐--&gt;</span><br><span class="line">&#123;% <span class="keyword">if</span> theme.netease_music %&#125;</span><br><span class="line">	&lt;iframe frameborder=<span class="string">&quot;no&quot;</span> border=<span class="string">&quot;0&quot;</span> marginwidth=<span class="string">&quot;0&quot;</span> marginheight=<span class="string">&quot;0&quot;</span> width=<span class="number">300</span> height=<span class="number">86</span> src=<span class="string">&quot;&#123;&#123;theme.netease_music&#125;&#125;&quot;</span>&gt;&lt;/iframe&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="个人页配置">个人页配置</h3>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324121157603.png" alt="" /><figcaption>image-20210324121157603</figcaption>
+</figure>
+<p>图中涉及外链代码如下：其中，<code>auto=1</code>表示自动播放。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&lt;!-- 网易云音乐 --&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginwidth</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginheight</span>=<span class="string">&quot;0&quot;</span> <span class="attr">width</span>=<span class="string">330</span> <span class="attr">height</span>=<span class="string">86</span> <span class="attr">src</span>=<span class="string">&quot;//music.163.com/outchain/player?type=2&amp;id=1358225549&amp;auto=1&amp;height=66&quot;</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="网易云音乐生成外链代码示例">3.网易云音乐生成外链代码示例</h2>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324144236822.png" width = "50%" height = "50%" div align=left /> <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324144329764.png" width = "50%" height = "50%" div align=right />
+</figure>
+<h2 id="部署页面">4.部署页面</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 清除缓存文件(db.json)和已经生成的静态文件(public)</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="meta">#</span><span class="bash"> 生成网站静态文件到默认设置的public文件夹</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动本地服务器，用于预览主题，查看是否生效</span></span><br><span class="line">hexo s --debug</span><br><span class="line"><span class="meta">#</span><span class="bash"> 自动生成网站静态文件，并部署到设定的仓库</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>NexT主题配置</category>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next主题添加页面点击特效</title>
+    <url>/2021/03/24/NexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88/</url>
+    <content><![CDATA[<h2 id="页面点击特效">页面点击特效</h2>
+<p>点击页面时出现爱心效果或烟花效果<span id="more"></span>，如下图所示。<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324112451451.png" alt="image-20210324112451451" /></p>
+<h3 id="新增主题配置">1. 新增主题配置</h3>
+<p>在/themes/next/_config.yml中添加一下内容，<strong>任何行插入皆可</strong>。都设置为true，会同时出现上图所示的两种点击效果。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Fireworks and love</span></span><br><span class="line"><span class="attr">love:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">fireworks:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="新增layout模版内容">2. 新增layout模版内容</h3>
+<p>在/themes/next/layout/_layout.swig配置结果如下图所示。注意位置是放在<code>&lt;/body&gt;</code>之前。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324105524748.png" alt="" /><figcaption>image-20210324105524748</figcaption>
+</figure>
+<ul>
+<li>对应的代码如下</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.love %&#125;</span><br><span class="line">&lt;!-- 页面点击出现爱心 --&gt;</span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;/js/src/love.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 页面点击出现烟花 --&gt;</span><br><span class="line">&#123;% <span class="keyword">if</span> theme.fireworks %&#125;</span><br><span class="line"> &lt;canvas <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;fireworks&quot;</span> style=<span class="string">&quot;position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;&quot;</span> &gt;&lt;/canvas&gt; </span><br><span class="line"> &lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;//cdn.bootcss.com/animejs/2.2.0/anime.min.js&quot;</span>&gt;&lt;/script&gt; </span><br><span class="line"> &lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;/js/src/fireworks.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="新增js脚本文件">3. 新增js脚本文件</h3>
+<p>上面代码中对应的<code>src="/js/src/love.js"</code>和<code>src="/js/src/fireworks.js"</code>，需要在对应路径下创建这两个脚本文件，如下图所示。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210324110639732.png" alt="" /><figcaption>image-20210324110639732</figcaption>
+</figure>
+<ul>
+<li>love.js脚本代码如下</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">! <span class="function"><span class="keyword">function</span> (<span class="params">e, t, a</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">n</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        c(<span class="string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>), o(), r()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">r</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> e = <span class="number">0</span>; e &lt; d.length; e++) d[e].alpha &lt;= <span class="number">0</span> ? (t.body.removeChild(d[e].el), d.splice(e, <span class="number">1</span>)) : (d[e].y--, d[e].scale += <span class="number">.004</span>, d[e].alpha -= <span class="number">.013</span>, d[e].el.style.cssText = <span class="string">&quot;left:&quot;</span> + d[e].x + <span class="string">&quot;px;top:&quot;</span> + d[e].y + <span class="string">&quot;px;opacity:&quot;</span> + d[e].alpha + <span class="string">&quot;;transform:scale(&quot;</span> + d[e].scale + <span class="string">&quot;,&quot;</span> + d[e].scale + <span class="string">&quot;) rotate(45deg);background:&quot;</span> + d[e].color + <span class="string">&quot;;z-index:99999&quot;</span>);</span><br><span class="line">        requestAnimationFrame(r)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">o</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> t = <span class="string">&quot;function&quot;</span> == <span class="keyword">typeof</span> e.onclick &amp;&amp; e.onclick;</span><br><span class="line">        e.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            t &amp;&amp; t(), i(e)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">i</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = t.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">        a.className = <span class="string">&quot;heart&quot;</span>, d.push(&#123;</span><br><span class="line">            el: a,</span><br><span class="line">            x: e.clientX - <span class="number">5</span>,</span><br><span class="line">            y: e.clientY - <span class="number">5</span>,</span><br><span class="line">            scale: <span class="number">1</span>,</span><br><span class="line">            alpha: <span class="number">1</span>,</span><br><span class="line">            color: s()</span><br><span class="line">        &#125;), t.body.appendChild(a)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = t.createElement(<span class="string">&quot;style&quot;</span>);</span><br><span class="line">        a.type = <span class="string">&quot;text/css&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            a.appendChild(t.createTextNode(e))</span><br><span class="line">        &#125; <span class="keyword">catch</span> (t) &#123;</span><br><span class="line">            a.styleSheet.cssText = e</span><br><span class="line">        &#125;</span><br><span class="line">        t.getElementsByTagName(<span class="string">&quot;head&quot;</span>)[<span class="number">0</span>].appendChild(a)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">s</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;rgb(&quot;</span> + ~~(<span class="number">255</span> * <span class="built_in">Math</span>.random()) + <span class="string">&quot;,&quot;</span> + ~~(<span class="number">255</span> * <span class="built_in">Math</span>.random()) + <span class="string">&quot;,&quot;</span> + ~~(<span class="number">255</span> * <span class="built_in">Math</span>.random()) + <span class="string">&quot;)&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> d = [];</span><br><span class="line">    e.requestAnimationFrame = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">setTimeout</span>(e, <span class="number">1e3</span> / <span class="number">60</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(), n()</span><br><span class="line">&#125;(<span class="built_in">window</span>, <span class="built_in">document</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>fireworks.js代码如下</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>;<span class="function"><span class="keyword">function</span> <span class="title">updateCoords</span>(<span class="params">e</span>)</span>&#123;pointerX=(e.clientX||e.touches[<span class="number">0</span>].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[<span class="number">0</span>].clientY-canvasEl.getBoundingClientRect().top&#125;<span class="function"><span class="keyword">function</span> <span class="title">setParticuleDirection</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> t=anime.random(<span class="number">0</span>,<span class="number">360</span>)*<span class="built_in">Math</span>.PI/<span class="number">180</span>,a=anime.random(<span class="number">50</span>,<span class="number">180</span>),n=[-<span class="number">1</span>,<span class="number">1</span>][anime.random(<span class="number">0</span>,<span class="number">1</span>)]*a;<span class="keyword">return</span>&#123;<span class="attr">x</span>:e.x+n*<span class="built_in">Math</span>.cos(t),<span class="attr">y</span>:e.y+n*<span class="built_in">Math</span>.sin(t)&#125;&#125;<span class="function"><span class="keyword">function</span> <span class="title">createParticule</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">var</span> a=&#123;&#125;;<span class="keyword">return</span> a.x=e,a.y=t,a.color=colors[anime.random(<span class="number">0</span>,colors.length-<span class="number">1</span>)],a.radius=anime.random(<span class="number">16</span>,<span class="number">32</span>),a.endPos=setParticuleDirection(a),a.draw=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">Math</span>.PI,!<span class="number">0</span>),ctx.fillStyle=a.color,ctx.fill()&#125;,a&#125;<span class="function"><span class="keyword">function</span> <span class="title">createCircle</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">var</span> a=&#123;&#125;;<span class="keyword">return</span> a.x=e,a.y=t,a.color=<span class="string">&quot;#F00&quot;</span>,a.radius=<span class="number">0.1</span>,a.alpha=<span class="number">0.5</span>,a.lineWidth=<span class="number">6</span>,a.draw=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">Math</span>.PI,!<span class="number">0</span>),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=<span class="number">1</span>&#125;,a&#125;<span class="function"><span class="keyword">function</span> <span class="title">renderParticule</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">for</span>(<span class="keyword">var</span> t=<span class="number">0</span>;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;<span class="function"><span class="keyword">function</span> <span class="title">animateParticules</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">for</span>(<span class="keyword">var</span> a=createCircle(e,t),n=[],i=<span class="number">0</span>;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;<span class="attr">targets</span>:n,<span class="attr">x</span>:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">return</span> e.endPos.x&#125;,<span class="attr">y</span>:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">return</span> e.endPos.y&#125;,<span class="attr">radius</span>:<span class="number">0.1</span>,<span class="attr">duration</span>:anime.random(<span class="number">1200</span>,<span class="number">1800</span>),<span class="attr">easing</span>:<span class="string">&quot;easeOutExpo&quot;</span>,<span class="attr">update</span>:renderParticule&#125;).add(&#123;<span class="attr">targets</span>:a,<span class="attr">radius</span>:anime.random(<span class="number">80</span>,<span class="number">160</span>),<span class="attr">lineWidth</span>:<span class="number">0</span>,<span class="attr">alpha</span>:&#123;<span class="attr">value</span>:<span class="number">0</span>,<span class="attr">easing</span>:<span class="string">&quot;linear&quot;</span>,<span class="attr">duration</span>:anime.random(<span class="number">600</span>,<span class="number">800</span>)&#125;,<span class="attr">duration</span>:anime.random(<span class="number">1200</span>,<span class="number">1800</span>),<span class="attr">easing</span>:<span class="string">&quot;easeOutExpo&quot;</span>,<span class="attr">update</span>:renderParticule,<span class="attr">offset</span>:<span class="number">0</span>&#125;)&#125;<span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">var</span> a;<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">var</span> n=<span class="built_in">this</span>,i=<span class="built_in">arguments</span>;<span class="built_in">clearTimeout</span>(a),a=<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;e.apply(n,i)&#125;,t)&#125;&#125;<span class="keyword">var</span> canvasEl=<span class="built_in">document</span>.querySelector(<span class="string">&quot;.fireworks&quot;</span>);<span class="keyword">if</span>(canvasEl)&#123;<span class="keyword">var</span> ctx=canvasEl.getContext(<span class="string">&quot;2d&quot;</span>),numberOfParticules=<span class="number">30</span>,pointerX=<span class="number">0</span>,pointerY=<span class="number">0</span>,tap=<span class="string">&quot;mousedown&quot;</span>,colors=[<span class="string">&quot;#FF1461&quot;</span>,<span class="string">&quot;#18FF92&quot;</span>,<span class="string">&quot;#5A87FF&quot;</span>,<span class="string">&quot;#FBF38C&quot;</span>],setCanvasSize=debounce(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;canvasEl.width=<span class="number">2</span>*<span class="built_in">window</span>.innerWidth,canvasEl.height=<span class="number">2</span>*<span class="built_in">window</span>.innerHeight,canvasEl.style.width=<span class="built_in">window</span>.innerWidth+<span class="string">&quot;px&quot;</span>,canvasEl.style.height=<span class="built_in">window</span>.innerHeight+<span class="string">&quot;px&quot;</span>,canvasEl.getContext(<span class="string">&quot;2d&quot;</span>).scale(<span class="number">2</span>,<span class="number">2</span>)&#125;,<span class="number">500</span>),render=anime(&#123;<span class="attr">duration</span>:<span class="number">1</span>/<span class="number">0</span>,<span class="attr">update</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;ctx.clearRect(<span class="number">0</span>,<span class="number">0</span>,canvasEl.width,canvasEl.height)&#125;&#125;);<span class="built_in">document</span>.addEventListener(tap,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="string">&quot;sidebar&quot;</span>!==e.target.id&amp;&amp;<span class="string">&quot;toggle-sidebar&quot;</span>!==e.target.id&amp;&amp;<span class="string">&quot;A&quot;</span>!==e.target.nodeName&amp;&amp;<span class="string">&quot;IMG&quot;</span>!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!<span class="number">1</span>),setCanvasSize(),<span class="built_in">window</span>.addEventListener(<span class="string">&quot;resize&quot;</span>,setCanvasSize,!<span class="number">1</span>)&#125;<span class="string">&quot;use strict&quot;</span>;<span class="function"><span class="keyword">function</span> <span class="title">updateCoords</span>(<span class="params">e</span>)</span>&#123;pointerX=(e.clientX||e.touches[<span class="number">0</span>].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[<span class="number">0</span>].clientY-canvasEl.getBoundingClientRect().top&#125;<span class="function"><span class="keyword">function</span> <span class="title">setParticuleDirection</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> t=anime.random(<span class="number">0</span>,<span class="number">360</span>)*<span class="built_in">Math</span>.PI/<span class="number">180</span>,a=anime.random(<span class="number">50</span>,<span class="number">180</span>),n=[-<span class="number">1</span>,<span class="number">1</span>][anime.random(<span class="number">0</span>,<span class="number">1</span>)]*a;<span class="keyword">return</span>&#123;<span class="attr">x</span>:e.x+n*<span class="built_in">Math</span>.cos(t),<span class="attr">y</span>:e.y+n*<span class="built_in">Math</span>.sin(t)&#125;&#125;<span class="function"><span class="keyword">function</span> <span class="title">createParticule</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">var</span> a=&#123;&#125;;<span class="keyword">return</span> a.x=e,a.y=t,a.color=colors[anime.random(<span class="number">0</span>,colors.length-<span class="number">1</span>)],a.radius=anime.random(<span class="number">16</span>,<span class="number">32</span>),a.endPos=setParticuleDirection(a),a.draw=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">Math</span>.PI,!<span class="number">0</span>),ctx.fillStyle=a.color,ctx.fill()&#125;,a&#125;<span class="function"><span class="keyword">function</span> <span class="title">createCircle</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">var</span> a=&#123;&#125;;<span class="keyword">return</span> a.x=e,a.y=t,a.color=<span class="string">&quot;#F00&quot;</span>,a.radius=<span class="number">0.1</span>,a.alpha=<span class="number">0.5</span>,a.lineWidth=<span class="number">6</span>,a.draw=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">Math</span>.PI,!<span class="number">0</span>),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=<span class="number">1</span>&#125;,a&#125;<span class="function"><span class="keyword">function</span> <span class="title">renderParticule</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">for</span>(<span class="keyword">var</span> t=<span class="number">0</span>;t&lt;e.animatables.length;t++)&#123;e.animatables[t].target.draw()&#125;&#125;<span class="function"><span class="keyword">function</span> <span class="title">animateParticules</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">for</span>(<span class="keyword">var</span> a=createCircle(e,t),n=[],i=<span class="number">0</span>;i&lt;numberOfParticules;i++)&#123;n.push(createParticule(e,t))&#125;anime.timeline().add(&#123;<span class="attr">targets</span>:n,<span class="attr">x</span>:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">return</span> e.endPos.x&#125;,<span class="attr">y</span>:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">return</span> e.endPos.y&#125;,<span class="attr">radius</span>:<span class="number">0.1</span>,<span class="attr">duration</span>:anime.random(<span class="number">1200</span>,<span class="number">1800</span>),<span class="attr">easing</span>:<span class="string">&quot;easeOutExpo&quot;</span>,<span class="attr">update</span>:renderParticule&#125;).add(&#123;<span class="attr">targets</span>:a,<span class="attr">radius</span>:anime.random(<span class="number">80</span>,<span class="number">160</span>),<span class="attr">lineWidth</span>:<span class="number">0</span>,<span class="attr">alpha</span>:&#123;<span class="attr">value</span>:<span class="number">0</span>,<span class="attr">easing</span>:<span class="string">&quot;linear&quot;</span>,<span class="attr">duration</span>:anime.random(<span class="number">600</span>,<span class="number">800</span>)&#125;,<span class="attr">duration</span>:anime.random(<span class="number">1200</span>,<span class="number">1800</span>),<span class="attr">easing</span>:<span class="string">&quot;easeOutExpo&quot;</span>,<span class="attr">update</span>:renderParticule,<span class="attr">offset</span>:<span class="number">0</span>&#125;)&#125;<span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">e,t</span>)</span>&#123;<span class="keyword">var</span> a;<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">var</span> n=<span class="built_in">this</span>,i=<span class="built_in">arguments</span>;<span class="built_in">clearTimeout</span>(a),a=<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;e.apply(n,i)&#125;,t)&#125;&#125;<span class="keyword">var</span> canvasEl=<span class="built_in">document</span>.querySelector(<span class="string">&quot;.fireworks&quot;</span>);<span class="keyword">if</span>(canvasEl)&#123;<span class="keyword">var</span> ctx=canvasEl.getContext(<span class="string">&quot;2d&quot;</span>),numberOfParticules=<span class="number">30</span>,pointerX=<span class="number">0</span>,pointerY=<span class="number">0</span>,tap=<span class="string">&quot;mousedown&quot;</span>,colors=[<span class="string">&quot;#FF1461&quot;</span>,<span class="string">&quot;#18FF92&quot;</span>,<span class="string">&quot;#5A87FF&quot;</span>,<span class="string">&quot;#FBF38C&quot;</span>],setCanvasSize=debounce(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;canvasEl.width=<span class="number">2</span>*<span class="built_in">window</span>.innerWidth,canvasEl.height=<span class="number">2</span>*<span class="built_in">window</span>.innerHeight,canvasEl.style.width=<span class="built_in">window</span>.innerWidth+<span class="string">&quot;px&quot;</span>,canvasEl.style.height=<span class="built_in">window</span>.innerHeight+<span class="string">&quot;px&quot;</span>,canvasEl.getContext(<span class="string">&quot;2d&quot;</span>).scale(<span class="number">2</span>,<span class="number">2</span>)&#125;,<span class="number">500</span>),render=anime(&#123;<span class="attr">duration</span>:<span class="number">1</span>/<span class="number">0</span>,<span class="attr">update</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;ctx.clearRect(<span class="number">0</span>,<span class="number">0</span>,canvasEl.width,canvasEl.height)&#125;&#125;);<span class="built_in">document</span>.addEventListener(tap,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="string">&quot;sidebar&quot;</span>!==e.target.id&amp;&amp;<span class="string">&quot;toggle-sidebar&quot;</span>!==e.target.id&amp;&amp;<span class="string">&quot;A&quot;</span>!==e.target.nodeName&amp;&amp;<span class="string">&quot;IMG&quot;</span>!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!<span class="number">1</span>),setCanvasSize(),<span class="built_in">window</span>.addEventListener(<span class="string">&quot;resize&quot;</span>,setCanvasSize,!<span class="number">1</span>)&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="部署页面">4. 部署页面</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 清除缓存文件(db.json)和已经生成的静态文件(public)</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="meta">#</span><span class="bash"> 生成网站静态文件到默认设置的public文件夹</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动本地服务器，用于预览主题，查看是否生效</span></span><br><span class="line">hexo s --debug</span><br><span class="line"><span class="meta">#</span><span class="bash"> 自动生成网站静态文件，并部署到设定的仓库</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>NexT主题配置</category>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PicGo图床同步Typora图片至GitHub</title>
+    <url>/2022/07/30/PicGo%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="picgo">PicGo</h1>
+<span id="more"></span>
+<h2 id="创建一个新的github仓库">1.创建一个新的GitHUb仓库</h2>
+<ul>
+<li><p>注意仓库需是Public</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315202712610.png" alt="" /><figcaption>image-20210315202712610</figcaption>
+</figure></li>
+</ul>
+<h2 id="生成token">2.生成token:</h2>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315203012043.png" alt="" /><figcaption>image-20210315203012043</figcaption>
+</figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315203335536.png" alt="" /><figcaption>image-20210315203335536</figcaption>
+</figure>
+<h2 id="配置picgo">3.配置PicGo</h2>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210315204803300.png" alt="" /><figcaption>image-20210315204803300</figcaption>
+</figure>
+<h2 id="picogo同步失败注意事项">4.PicoGO同步失败注意事项</h2>
+<ul>
+<li>图片名设置 开启时间戳命名，否则重名图片上传会失败 <img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk4MjIzOA==,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述" /></li>
+</ul>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推荐系统概览</title>
+    <url>/2021/03/18/Recommend%20System/</url>
+    <content><![CDATA[<h2 id="推荐系统">推荐系统</h2>
+<p>解决大规模用户场景下，大量信息的精准分发问题。 <span id="more"></span></p>
+<h3 id="传统策略">1. 传统策略</h3>
+<h3 id="基于内容的推荐">1.1 基于内容的推荐</h3>
+<p>利用用户的偏好标签进行推荐；</p>
+<h3 id="协同过滤">1.2 协同过滤</h3>
+<ul>
+<li>人以群分: 基于用户的协同过滤 =&gt; 推荐相似用户喜欢的商品；</li>
+<li>物与类聚：基于商品的协同过滤 =&gt; 推荐相似物品；</li>
+</ul>
+<h3 id="基于模型的推荐">1.3 基于模型的推荐</h3>
+<ul>
+<li>基于用户的历史行为、用户信息、商品信息，构建算法模型；</li>
+<li>LR、MF、DNN-Based</li>
+</ul>
+<h3 id="基于社交关系的推荐">1.4 基于社交关系的推荐</h3>
+<ul>
+<li>例如微信中的“好看”</li>
+</ul>
+]]></content>
+      <categories>
+        <category>recommend system</category>
+      </categories>
+      <tags>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/03/10/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>. <span id="more"></span></p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>tutorial</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vim编辑器</title>
+    <url>/2022/07/30/vim_log/</url>
+    <content><![CDATA[<h1 id="vim">Vim</h1>
+<p>vi有三种基本工作模式：命令模式、文本输入模式、末行模式 <span id="more"></span></p>
+<h2 id="常用快捷键操作">常用快捷键操作</h2>
+<ul>
+<li>h:左移、l:右移、k:上移、j:下移</li>
+<li>M:光标移动到中间行</li>
+<li>L:光标移动到屏幕最后一行行首</li>
+<li>G:移动到指定行。行号+G</li>
+<li>w:向后一次移动一个字</li>
+<li>b:向前一次移动一个字</li>
+<li>{:按段移动，上移</li>
+<li>}:按段移动，下移</li>
+<li>Ctrl+u:向上翻半屏</li>
+<li>Ctrl+d:向下翻半屏</li>
+<li>gg:光标移动到文件开头</li>
+<li>G:光标移动到文件末尾</li>
+</ul>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="删除命令">01. 删除命令</h3>
+<ul>
+<li>x:删除光标后一个字符，相当于Del</li>
+<li>X:删除光标前一个字符，相当于Backspace</li>
+<li>dd:删除光标所在行，n dd 删除指定的行数</li>
+<li>D:删除光标后本行所有内容，包含光标所在字符</li>
+<li>d0:删除光标前本行所有内容，不包含光标所在字符</li>
+<li>dw:删除光标开始位置的字，包含光标所在字符</li>
+</ul>
+<h3 id="撤销命令">02. 撤销命令</h3>
+<ul>
+<li>u:一步一步撤销，相当于Ctrl+Z</li>
+<li>Ctrl+r:反撤销，相当于Ctrl+Shift+Z</li>
+</ul>
+<h3 id="重复命令">03. 重复命令</h3>
+<ul>
+<li>.:重复上一次操作的命令，相当于复制操作Ctrl+V</li>
+</ul>
+<h3 id="查找命令">04. 查找命令</h3>
+<ul>
+<li>/str: 查找</li>
+<li>n: 下一个</li>
+<li>N: 上一个</li>
+</ul>
+<h2 id="二常用光标操作">二、常用光标操作</h2>
+<ul>
+<li>^: 移至当前行首</li>
+<li>n|: 移至当前行的第n个字符处</li>
+<li>+: 移至下一行的第一个字符</li>
+<li>-: 移至上一行的第一个字符</li>
+<li>e: 移至当前单词结尾</li>
+<li>(: 移至当前句子开头</li>
+<li>): 移至下一条句子开头</li>
+<li>{: 移至当前段的开头</li>
+<li>}: 移至下一段的开头</li>
+<li>``: 移至之前的位置</li>
+</ul>
+<h2 id="三常用文本操作">三、常用文本操作</h2>
+<h3 id="移动">01. 移动</h3>
+<ul>
+<li>v: 可视模式下，结合左右键选择多个字母，也可以结合上下键选择多行</li>
+<li>V: 可视模式下，结合上下键选择多行</li>
+<li>&gt;&gt;: 文本行右移</li>
+<li>&lt;&lt;: 文本行左移</li>
+</ul>
+<h3 id="复制粘贴">02. 复制粘贴</h3>
+<ul>
+<li>yy:复制当前行，nyy 复制n行</li>
+<li>p:在光标所在位置向下新开辟一行，粘贴</li>
+<li><strong>复制单行</strong>： 在命令模式下，将光标移动到需要复制的行处，按yy进行复制</li>
+<li><strong>复制多行</strong>： 在命令模式下，将光标移动到需要复制的首行处，按nyy复制当前行开始的n行内容</li>
+<li><strong>粘贴</strong>： 在命令模式下，将光标移动到需要粘贴的行处，按p进行粘贴</li>
+</ul>
+<h2 id="四可视模式">四、可视模式</h2>
+<ul>
+<li>v:按字符移动，选中文本</li>
+<li>V:按行移动，选中文本可视模式可以配合d, y, &gt;&gt;, &lt;&lt;实现对文本块的删除，复制，左右移动</li>
+</ul>
+<h3 id="替换操作">替换操作</h3>
+<ul>
+<li>r:替换当前字符</li>
+<li>R:替换当前行光标后的字符</li>
+</ul>
+<h2 id="五实例说明">五、实例说明</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 末行模式下，把当前文件中的所有abc替换成123</span></span><br><span class="line">:%s/abc/123/g</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末行模式下， 将第一行至第十行之间的abc替换成123</span></span><br><span class="line">:1, 10s/abc/123/g</span><br><span class="line"><span class="meta">#</span><span class="bash"> vim里执行shell下命令</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 末行模式下输入!，后面紧跟命令</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【word2vec】预备知识</title>
+    <url>/2021/04/28/word2vec%E4%B9%8B%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h2 id="语言统计模型">语言统计模型</h2>
+<p>一个语言统计模型可以表示为，在给定之前单词的情况下，下一个单词的条件概率。 <span class="math display">\[
+P(w_{1}^{T}) = \prod_{t=1}^{T} P(w_t|w_1^{t-1})
+\]</span> <span id="more"></span> 其中，<span class="math inline">\(w_t\)</span>是第<span class="math inline">\(t\)</span>个单词，子序列<span class="math inline">\(w_i^j=(w_i, w_{i+1}, \cdots, w_{j-1}, w_j)\)</span>。</p>
+<p>简单而言，语言统计模型是用来计算一个句子的概率（可以理解为这个句子是不是人话的概率）。假设<span class="math inline">\(S=w_1^T\)</span>表示由<span class="math inline">\(T\)</span>个单词<span class="math inline">\(w_1, w_2, \cdots, w_T\)</span>按顺序组成的一个句子，则<span class="math inline">\(w_1,w_2,\cdots,w_T\)</span>的联合概率表示如下： <span class="math display">\[
+P(S) = P(w_1^T) = P(w_1, w_2, \cdots, w_T)
+\]</span> 其中，<span class="math inline">\(P(S)\)</span>就表示句子的概率。利用贝叶斯公式，上式可以链式分解为以下形式： <span class="math display">\[
+P(S) = P(w_1^T) = P(w_1) \cdot P(w_2|w_1) \cdot P(w_3|w_1^2) \cdots P(w_T|w_1^{T-1})
+\]</span> 其中的各（条件）概率<span class="math inline">\(P(w_1) \cdot P(w_2|w_1) \cdot P(w_3|w_1^2) \cdots P(w_T|w_1^{T-1})\)</span>就是语言统计模型的参数。若这些参数全部提前计算好，那么给定一个句子$ S=w_1<sup>T<span class="math inline">\(，就可以很快算出相应的概率\)</span>P(w_1</sup>T)$。</p>
+<p><strong>然而，这样的方法有两个非常大的缺点：</strong></p>
+<ol type="1">
+<li>参数空间过大：条件概率<span class="math inline">\(P(w_T|w_1^{T-1})\)</span>的可能性太多，无法估算；</li>
+<li>数据稀疏严重：对于非常多的词对组合，在语料库中都没有出现，依据最大似然估计得到的概率将会为0。</li>
+</ol>
+<p>参数空间过大，我们可以估计模型参数的个数来说明这一点。给定一个长度为<span class="math inline">\(T\)</span>的句子，就需要计算<span class="math inline">\(T-1\)</span>个参数。假设语料库对应的词汇量为<span class="math inline">\(N\)</span>，那么如果考虑长度为T的任意句子，理论上就有<span class="math inline">\(N^T\)</span>种可能。所以计算所有种可能句子的参数计算量为<span class="math inline">\(N^T*（T-1）\)</span>。即便这些概率计算好后，还得保存下来，因此存储这些信息页需要很大的内存开销。</p>
+<p>那么这些参数如何计算呢？常见的方法有n-gram模型、决策树、最大熵模型、最大熵马尔科夫模型、条件随机场、神经网络等方法。我们暂时只讨论n-gram模型和神经网络两种方法。</p>
+<hr />
+<h2 id="n-gram模型">n-gram模型</h2>
+<p>首先考虑一个词出现的条件概率<span class="math inline">\(P(w_T|w_1^{T-1})\)</span>的近似计算，利用贝叶斯公式，有： <span class="math display">\[
+P(w_T|w_1^{T-1}) = \frac {P(w_1^{T-1}) \cdot P(w_T)}{P(w_1^{T-1})} = \frac {P(w_1^T)}{P(w_1^{T-1})}
+\]</span> 根据大数定理，当语料库足够大时，上式可近似表示为： <span class="math display">\[
+P(w_T|w_1^{T-1}) \approx \frac {count(w_1^T)}{count(w_1^{T-1})}
+\]</span> 其中，<span class="math inline">\(count(w_1^T)\)</span>和<span class="math inline">\(count(w_1^{T-1})\)</span>分别表示句子<span class="math inline">\(w_1^{T}\)</span>和<span class="math inline">\(w_1^{T-1}\)</span>在语料中出现的次数。可想而知，当<span class="math inline">\(T\)</span>很大时，参数空间将会非常，从而导致计算非常耗时。</p>
+<p>从式4可以看出，一个词出现的概率与它前面出现的所有词都相关，这无疑是耗时耗力的。</p>
+<blockquote>
+<p><strong>为了解决参数空间过大的问题。</strong></p>
+<p>引入马尔科夫假设：随意一个词出现的概率只与它前面出现的有限的一个或几个词有关。</p>
+</blockquote>
+<p>假定一个词出现的概率只与它前面出现的固定数目的词相关，便是n-gram模型的基本思想。它作了一个<span class="math inline">\(n-1\)</span>阶的马尔科夫假设，认为一个词出现的概率只与它前面出现的<span class="math inline">\(n-1\)</span>个词相关，即： <span class="math display">\[
+P(w_T|w_1^{T-1}) \approx P(w_T|w_{T-n+1}^{T-1})
+\]</span> 由此，式5就可以表示为： <span class="math display">\[
+P(w_T|w_1^{T-1}) \approx \frac {count(w_{T-n+1}^T)}{count(w_{T-n+1}^{T-1})}
+\]</span> 以n=2为例，有： <span class="math display">\[
+P(w_T|w_1^{T-1}) \approx \frac {count(w_{k-1}, w_k)}{w_{k-1}}
+\]</span> 显然，这样一简化，不仅使单个参数的统计变得更容易（统计时需要匹配的词串更短），也使参数的总数变少了许多。</p>
+<p><strong>一般地，存在以下常见的n-gram模型：</strong></p>
+<p>n=1时，如果一个词的出现与它周围的词独立，那么我们就称之为unigram，也就是<strong>一元模型：</strong> <span class="math display">\[
+P(S) = P(w_1^T) \approx P(w_1) \cdot P(w_2) \cdot P(w_3) \cdots P(w_T)
+\]</span> n=2时，如果一个词的出现与仅依赖于它前面出现的一个词，那么我们就称之为bigram，也就是<strong>二元模型：</strong> <span class="math display">\[
+P(S) = P(w_1^T) \approx P(w_1) \cdot P(w_2|w_1) \cdot P(w_3|w_2) \cdots P(w_T|w_{T-1})
+\]</span> n=3时，如果一个词的出现与仅依赖于它前面出现的两个词，那么我们就称之为trigram，也就是<strong>三元模型：</strong> <span class="math display">\[
+P(S) = P(w_1^T) \approx P(w_1) \cdot P(w_2|w_1) \cdot P(w_3|w_1^2) \cdots P(w_T|w_{T-2}^{T-1})
+\]</span> <a href="https://zhuanlan.zhihu.com/p/28080127">参考链接</a>：<strong>在实践中用的最多的就是bigram和trigram了，高于四元的用的非常少，由于训练它须要更庞大的语料，并且数据稀疏严重，时间复杂度高，精度却提高的不多。</strong></p>
+<p>另外，n-gram模型中还有一个叫做<strong>平滑化</strong>的重要环节。考虑两个问题：</p>
+<ol type="1">
+<li>若<span class="math inline">\(count(w_{T-n+1}^T)=0\)</span>，能否认为<span class="math inline">\(P(w_T|w_1^{T-1})\)</span>就等于0？</li>
+<li>若<span class="math inline">\(count(w_{T-n+1}^T) = count(w_{T-n+1}^{T-1})\)</span>，能否认为<span class="math inline">\(P(w_T|w_1^{T-1})\)</span>就等于1呢？</li>
+</ol>
+<p>显然不能。不管语料库多大，这都是一个无法回避的问题。平滑化技术就是用来处理这个问题的，暂时不做讨论。</p>
+<p>总的来说，n-gram模型的主要工作是在语料库中统计各子串出现的次数以及平滑化处理。相应的概率值计算好后聚存储起来，下次需要计算一个句子的概率时，只需要找到相关的概率参数，将它们连乘起来就可以了。</p>
+<hr />
+<blockquote>
+<p>在机器学习领域有一种通用的招数：对所考虑的问题建模先为其构造一个目标函数，然后对这个目标函数进行优化，从而求得一组最优的参数，最后利用这组最优参数对应的模型来进行预测。</p>
+</blockquote>
+<p>对于语言统计模型而言，利用最大似然，可把目标函数设为： <span class="math display">\[
+\prod_{w\in C} p(w|context(w))
+\]</span> 其中，<span class="math inline">\(C\)</span>表示语料，<span class="math inline">\(context(w)\)</span>表示词<span class="math inline">\(w\)</span>的上下文，即<span class="math inline">\(w\)</span>周边的词的集合。当<span class="math inline">\(context(w)\)</span>为空时，就取<span class="math inline">\(p(w|context(w)) = p(w)\)</span>。特别地，对于前面介绍的n-gram模型，就有<span class="math inline">\(context(w_i) = w_{i-n+1}^{i-1}\)</span>。</p>
+<p>当然，实际应用中常采用最大化对数似然的方式，即把目标函数设为： <span class="math display">\[
+L = \sum_{w\in C}log(p(w|context(w)))
+\]</span> 由此可见，概率<span class="math inline">\(p(w|context(w))\)</span>已被视为关于<span class="math inline">\(w\)</span>和<span class="math inline">\(context(w)\)</span>的函数，即： <span class="math display">\[
+p(w|context(w)) = F(w, context(w), \theta)
+\]</span> 其中，<span class="math inline">\(\theta\)</span>为待定参数集。这样一来，一旦对式13进行优化后得到最优参数集<span class="math inline">\(\theta^*\)</span>后，<span class="math inline">\(F\)</span>也就唯一被确定了，以后任何概率<span class="math inline">\(p(w|context(w))\)</span>就可以通过函数<span class="math inline">\(F(w, context(w), \theta^*)\)</span>来计算。相比于n-gram模型，这种方法不需要（事先计算并）保存所有的概率值，而是通过直接计算来获取，且通过选取合适的模型可以使<span class="math inline">\(\theta\)</span>中参数的个数远小于n-gram中模型参数的个数。</p>
+<p>很显然，对于这样的方法，最关键的地方在于函数<span class="math inline">\(F\)</span>的构造。考虑到神经网络理论上可以拟合任意函数，接下来介绍基于神经网络的语言模型。</p>
+<h2 id="神经概率语言模型">神经概率语言模型</h2>
+<p>2003年，Bengio提出A neural probabilistic language model。该模型用到了一个重要工具——<strong>词向量</strong>。</p>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/image-20210428110123263.png" alt="" /><figcaption>image-20210428110123263</figcaption>
+</figure>
+<h2 id="基于hierarchical-softmax的模型">基于Hierarchical Softmax的模型</h2>
+<p>使用Huffman树替代NNLM中的隐藏层到输出层的映射，以期减少计算量。</p>
+<p>建模目标函数。</p>
+<p>使用随机梯度上升法进行优化。</p>
+<h3 id="cbow模型">CBOW模型</h3>
+<h3 id="skip-gram模型">Skip-gram模型</h3>
+<hr />
+<h2 id="基于negative-sampling的模型">基于Negative Sampling的模型</h2>
+<p>目的是用来提高训练速度，并改善所得词向量的质量。</p>
+<h3 id="cbow模型-1">CBOW模型</h3>
+<h3 id="skip-gram模型-1">Skip-gram模型</h3>
+]]></content>
+      <categories>
+        <category>嵌入</category>
+      </categories>
+      <tags>
+        <tag>word2vec</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推荐系统经典论文回顾-FM模型</title>
+    <url>/2021/04/16/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87-FM%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<h2 id="fm2010">FM【2010】</h2>
+<ul>
+<li>相比于SVM，FM能够使用因子化的参数建模所有交互；<span id="more"></span></li>
+<li>即使在数据高度稀疏的情况下，也可以对任意两特征之间的交互作用很好的建模；</li>
+<li>预测和学习的参数数量及时间是线性的，可以直接使用SGD优化，并且允许优化不同的损失函数。</li>
+</ul>
+<h3 id="模型方程">模型方程</h3>
+<p>二阶的因子分解机模型方程定义如下： <span class="math display">\[
+\hat y(x) := w_0 + \sum_{i=1}^{n}w_ix_i + \sum_{i=1}^n\sum_{j=i+1}^n&lt;v_i, v_j&gt;x_ix_j
+\]</span> 其中，需要被估计的模型参数是<span class="math inline">\(w_0\in R,\quad w\in R^n, \quad V\in R^{n\times k}\)</span>；<span class="math inline">\(&lt;.,.&gt;\)</span>是维度为k的两个向量之间内积： <span class="math display">\[
+&lt;v_i, v_j&gt;:=\sum_{f=1}^{k}v_{i,f}\cdot v_{j,f}
+\]</span> <span class="math inline">\(v_i\)</span>表示<span class="math inline">\(V\)</span>中第i行有<span class="math inline">\(k\)</span>个因子的行向量。<span class="math inline">\(k \in N_{0}^{+}\)</span>是定义因子维度的一个超参数。</p>
+<p>一个二阶的FM模型可以捕获所有单个变量和变量间的成对交互：</p>
+<ul>
+<li><span class="math inline">\(w_0\)</span>是全局偏差；</li>
+<li><span class="math inline">\(w_i\)</span>建模第<span class="math inline">\(i\)</span>个变量的强度；</li>
+<li><span class="math inline">\(\hat w_{i,j}:=&lt;v_i, v_j&gt;\)</span>建模第<span class="math inline">\(i\)</span>个变量和第<span class="math inline">\(j\)</span>个变量之间的交互。FM不是对每个交互使用一个模型参数<span class="math inline">\(w_{ij}\in R\)</span>，而是通过因子分解对其建模。这是允许FM在稀疏情况下，还能实现高阶交互（<span class="math inline">\(d \ge 2\)</span>）的高质量参数估计的关键点。</li>
+</ul>
+<h3 id="模型表达能力">模型表达能力</h3>
+<p>​ 众所周知，对于任意的正定矩阵<span class="math inline">\(W\)</span>， 存在一个矩阵<span class="math inline">\(V\)</span>，在k足够大的情况下，使得<span class="math inline">\(W=V \cdot V^t\)</span>。这表明，只要<span class="math inline">\(k\)</span>足够大，FM就能够表达任意的交互矩阵<span class="math inline">\(W\)</span>。然而，在稀疏背景下，由于不存在足够的数据来估计复杂的交互<span class="math inline">\(W\)</span>，通常会选择一个较小的<span class="math inline">\(k\)</span>。那么这样做会带来什么样的影响呢？限制<span class="math inline">\(k\)</span>，可以限制FM的表达能力，导致更好的泛化，从而改进稀疏下的交互矩阵。</p>
+<h3 id="稀疏条件下的参数估计">稀疏条件下的参数估计</h3>
+<p>​ 在稀疏环境下，通常没有足够的数据来直接或间接地估计变量间的交互。那么为什么因子分解机可以在这样的环境下估计变量间的交互作用呢？这是因为它们通过因子分解破坏了相互作用参数的独立性。一般来说，这意味着只是一个交互的数据也有助于估计相关交互的参数。</p>
+<p>​ 例如，传统的任意两个特征的交互作用参数<span class="math inline">\(w_{i,j}\)</span>需要特征<span class="math inline">\(x_i\)</span>和特征<span class="math inline">\(x_j\)</span>在训练数据中同时出现，才能通过梯度下降更新<span class="math inline">\(w_{ij}\)</span>。而在实际训练数据中，任意两个特征同时出现交互的情况并不多，甚至根本不存在，这就会导致<span class="math inline">\(w_{ij}=0\)</span>。</p>
+<p>例如，我们想估计用户A和电影战狼2的交互参数。如果训练数据中，用户A从没有看过战狼2，则<span class="math inline">\(w_{用户A,战狼2}=0\)</span>。</p>
+<p>而在因子分解模型中，我们可以估计交互参数<span class="math inline">\(w_{用户A,战狼2}=&lt;v_{用户A}, v_{战狼2}&gt;\)</span>。而<span class="math inline">\(v_{用户A}\)</span>和<span class="math inline">\(v_{战狼2}\)</span>可以通过其他样本学习。</p>
+<h3 id="公式简化">公式简化</h3>
+<p>二阶交互项重新化简如下（想象为矩阵的上三角）： <span class="math display">\[
+\begin{align}
+&amp;\quad\sum_{i=1}^{n} \sum_{j=i+1}^n&lt;v_i, v_j&gt;x_i x_j \\
+&amp;= \frac12\sum_{i=1}^{n}\sum_{j=1}^{n}&lt;v_i, v_j&gt; x_i x_j - \frac12\sum_{i=1}^{n}&lt;v_i, v_i&gt;x_ix_i \\
+&amp;= \frac12\left(\sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{f=1}^{k} v_{i,f}v_{j,f}x_ix_j-  \sum_{i=1}^n\sum_{f=1}^{k} v_{i,f}v_{j_f}x_ix_i\right) \\
+&amp;= \frac12\sum_{f=1}^{k}\left(\left(\sum_{i=1}^{n}v_{i,f}x_i\right) \left(\sum_{j=1}^{n}v_{j,f}x_j \right) - \sum_{i=1}^n v_{i,f}^2 x_{i}^2\right)\\
+&amp;= \frac12\sum_{f=1}^{k}\left(\left(\sum_{i=1}^{n}v_{i,f}x_i \right)^2 - \sum_{i=1}^{n} v_{i,f}^2 x_{i}^2 \right)
+\end{align}
+\]</span> ​ 该等式的拥有线性时间复杂度<span class="math inline">\(O(kn)\)</span>。值得一提的是，在稀疏条件下，特征向量<span class="math inline">\(x\)</span>中的大多数元素为0，因此在上述等式7中的求和运算只会在<span class="math inline">\(x\)</span>中的非零位置发生，从而使得FM在稀疏条件下的时间复杂度为<span class="math inline">\(O(k\overline m_D)\)</span>，其中<span class="math inline">\(\overline m_D\)</span>是所有<span class="math inline">\(x\in D\)</span>中的非零元素<span class="math inline">\(m(x)\)</span>的平均值。特别地，对于典型的推荐系统中的MF方法，<span class="math inline">\(\overline m_D=2\)</span>。</p>
+<p>FM模型的梯度计算： <span class="math display">\[
+\frac {\partial}{\partial\theta}\hat y(x) = 
+\begin{cases}
+1, &amp; if\ \theta \ is \ w_0 \\[1ex]
+x_i, &amp; if\ \theta \ is \ w_i \\[1ex]
+x_i\sum_{j=1}^{n}v_{j,f}x_j-v_{j_f}x_{i}^2, &amp; if\ \theta \ is \ v_{i,f}
+\end{cases}
+\]</span> 其中，<span class="math inline">\(\sum_{j=1}^{n} v_{j,f}x_j\)</span>是独立于<span class="math inline">\(i\)</span>的，因此可以在计算<span class="math inline">\(\hat y(x)\)</span>之前预先计算好。总的来说，可以在常数时间<span class="math inline">\(O(1)\)</span>下计算各个方向的梯度。对于一个实例<span class="math inline">\((x, y)\)</span>而言，所有参数的更新可以在<span class="math inline">\(O(kn)\)</span>下完成。特别地，在稀疏场景下的，所有参数的更新只需要<span class="math inline">\(O(km(x))\)</span>。</p>
+<h3 id="总结">总结</h3>
+<p>FM模型对特征向量<span class="math inline">\(x\)</span>中所有可能的交互利用因子分解机来建模，相比完全参数化的建模方式，FM有如下两个优点：</p>
+<ol type="1">
+<li>特征之间的交互即使在高纬稀疏的情况下也可以被估计。这使得它能够很好的泛化到未观测的特征交互上；</li>
+<li>参数的数量以及预测和学习的时间是线性的。这使得使用SGD进行直接优化是可行的，并允许针对各种损失函数（square, logit or hinge loss）进行优化。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>recommend system</category>
+      </categories>
+      <tags>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间序列分析</title>
+    <url>/2021/03/29/timeseries_predict/</url>
+    <content><![CDATA[<h1 id="价格预测回归模型">价格预测：回归模型</h1>
+<span id="more"></span>
+<ul>
+<li>MLP</li>
+<li>CNN</li>
+<li>RNN</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> datetime <span class="keyword">as</span> dt</span><br><span class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error, classification_report</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.keras.layers <span class="keyword">import</span> Dense, Dropout, Activation, Flatten</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.keras.layers <span class="keyword">import</span> LSTM, GRU</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.keras.layers <span class="keyword">import</span> Convolution1D, MaxPooling1D</span><br></pre></td></tr></table></figure>
+<h2 id="共用函数">共用函数</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 收盘价格数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_snp_close</span>():</span></span><br><span class="line">    f = <span class="built_in">open</span>(<span class="string">&#x27;table.csv&#x27;</span>, <span class="string">&#x27;r&#x27;</span>).readlines()[<span class="number">1</span>:]</span><br><span class="line">    raw_prices = []</span><br><span class="line">    raw_dates = []</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        data = line.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">        raw_prices.append(<span class="built_in">float</span>(data[<span class="number">4</span>]))</span><br><span class="line">        raw_dates.append(data[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> raw_prices, raw_dates</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成训练所需数据集-回归问题</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split_into_chunks</span>(<span class="params">data, train_size, target_size, lag_size, scale=<span class="literal">False</span></span>):</span></span><br><span class="line">    X, y = [], []</span><br><span class="line">    <span class="comment"># 注意此处需要减去train_size，不然后续最后生成的数据就是ragged array格式，输入到模型中去会报错。</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(data)-train_size, lag_size):</span><br><span class="line">        timeseries = np.array(data[i: i + train_size + target_size])</span><br><span class="line">        <span class="keyword">if</span> scale:</span><br><span class="line">            timeseries = preprocessing.scale(timeseries)</span><br><span class="line">        X.append(timeseries[:-<span class="number">1</span>])</span><br><span class="line">        y.append(timeseries[-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> X, y</span><br><span class="line"></span><br><span class="line"><span class="comment"># X,y一致shuffle</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shuffle_in_unison</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="built_in">len</span>(a) == <span class="built_in">len</span>(b)</span><br><span class="line">    shuffle_a = np.empty(a.shape, dtype=a.dtype)</span><br><span class="line">    shuffle_b = np.empty(b.shape, dtype=b.dtype)</span><br><span class="line">    permutation = np.random.permutation(<span class="built_in">len</span>(a))</span><br><span class="line">    <span class="keyword">for</span> old_index, new_index <span class="keyword">in</span> <span class="built_in">enumerate</span>(permutation):</span><br><span class="line">        shuffle_a[new_index] = a[old_index]</span><br><span class="line">        shuffle_b[new_index] = b[old_index]</span><br><span class="line">    <span class="keyword">return</span> shuffle_a, shuffle_b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成训练集、测试集</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">creat_train_test</span>(<span class="params">X, y, ratio</span>):</span></span><br><span class="line">    train_size = <span class="built_in">int</span>(<span class="built_in">len</span>(X)*ratio)</span><br><span class="line">    X_train, y_train = X[:train_size], y[:train_size]</span><br><span class="line">    </span><br><span class="line">    X_train, y_train = shuffle_in_unison(X_train, y_train)</span><br><span class="line">    </span><br><span class="line">    X_test, y_test = X[train_size:], y[train_size:]    </span><br><span class="line">    <span class="keyword">return</span> X_train, y_train, X_test, y_test</span><br><span class="line"></span><br><span class="line"><span class="comment"># restore data from scaled data</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_unscale_data</span>(<span class="params">scale_data, params</span>):</span></span><br><span class="line">    unscaled_data = []</span><br><span class="line">    <span class="keyword">for</span> _data, param <span class="keyword">in</span> <span class="built_in">zip</span>(scale_data, params):</span><br><span class="line">        value = _data * param[<span class="string">&#x27;std&#x27;</span>]</span><br><span class="line">        value += param[<span class="string">&#x27;mean&#x27;</span>]</span><br><span class="line">        unscaled_data.append(value)</span><br><span class="line">    <span class="keyword">return</span> unscaled_data</span><br></pre></td></tr></table></figure>
+<h2 id="mlp模型">MLP模型</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构建MLP模型</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_mlp_model</span>():</span></span><br><span class="line">    model = Sequential()</span><br><span class="line">    model.add(Dense(<span class="number">500</span>, input_shape=(<span class="number">20</span>,)))</span><br><span class="line">    model.add(Activation(<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">    model.add(Dropout(<span class="number">0.25</span>))</span><br><span class="line">    model.add(Dense(<span class="number">250</span>))</span><br><span class="line">    model.add(Activation(<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">    model.add(Dense(<span class="number">1</span>))</span><br><span class="line">    model.add(Activation(<span class="string">&#x27;linear&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 生成训练集、测试集</span></span><br><span class="line">raw_prices, raw_dates = load_snp_close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># scale数据</span></span><br><span class="line">close_dates = [dt.datetime.strptime(_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>).date() <span class="keyword">for</span> _date <span class="keyword">in</span> raw_dates]</span><br><span class="line">X, y = split_into_chunks(data=raw_prices, train_size=<span class="number">20</span>, target_size=<span class="number">1</span>, lag_size=<span class="number">1</span>, scale=<span class="literal">True</span>)</span><br><span class="line">X, y = np.array(X), np.array(y)</span><br><span class="line">X_train, y_train, X_test, y_test = creat_train_test(X=X, y=y, ratio=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># unscale数据</span></span><br><span class="line">X_unscaled, y_unscaled = split_into_chunks(data=raw_prices, train_size=<span class="number">20</span>, target_size=<span class="number">1</span>, lag_size=<span class="number">1</span>, scale=<span class="literal">False</span>)</span><br><span class="line">X_unscaled, y_unscaled = np.array(X_unscaled), np.array(y_unscaled)</span><br><span class="line">X_unscaled_train, y_unscaled_train, X_unscaled_test, y_unscaled_test = creat_train_test(X=X_unscaled, y=y_unscaled, ratio=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape, X_test.shape)</span><br><span class="line">print(X_unscaled_train.shape, X_unscaled_test)</span><br><span class="line"><span class="comment"># 可视化：收盘历史数据走势</span></span><br><span class="line">plt.plot(close_dates, raw_prices)</span><br></pre></td></tr></table></figure>
+<pre><code>(15016, 20) (1669, 20)
+(15016, 20) [[45.75     46.400002 46.580002 ... 46.939999 47.360001 47.57    ]
+ [46.400002 46.580002 46.209999 ... 47.360001 47.57     47.66    ]
+ [46.580002 46.209999 46.240002 ... 47.57     47.66     47.950001]
+ ...
+ [17.23     17.049999 17.049999 ... 17.030001 17.08     16.98    ]
+ [17.049999 17.049999 17.02     ... 17.08     16.98     16.93    ]
+ [17.049999 17.02     16.82     ... 16.98     16.93     16.85    ]]
+
+
+
+
+
+[&lt;matplotlib.lines.Line2D at 0x16fd85730&gt;]</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_6_2.png" alt="png" /> ​</p>
+<h3 id="使用scale数据训练模型">使用scale数据训练模型</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 训练模型: scale data</span></span><br><span class="line">model = build_mlp_model()</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br><span class="line">model.fit(X_train, y_train, epochs=<span class="number">5</span>, batch_size=<span class="number">128</span>, verbose=<span class="number">1</span>, validation_split=<span class="number">0.1</span>)</span><br><span class="line">score = model.evaluate(X_test, y_test, batch_size=<span class="number">128</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Epoch 1/5
+106/106 [==============================] - 1s 4ms/step - loss: 0.5257 - val_loss: 0.0882
+Epoch 2/5
+106/106 [==============================] - 0s 3ms/step - loss: 0.1043 - val_loss: 0.0120
+Epoch 3/5
+106/106 [==============================] - 0s 3ms/step - loss: 0.0442 - val_loss: 0.0086
+Epoch 4/5
+106/106 [==============================] - 0s 3ms/step - loss: 0.0303 - val_loss: 0.0097
+Epoch 5/5
+106/106 [==============================] - 0s 3ms/step - loss: 0.0240 - val_loss: 0.0055
+14/14 [==============================] - 0s 1ms/step - loss: 0.0052</code></pre>
+<h3 id="使用unscale数据训练模型">使用unscale数据训练模型</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 训练模型: unscale data</span></span><br><span class="line">unscaled_model = build_mlp_model()</span><br><span class="line">unscaled_model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br><span class="line">unscaled_model.fit(X_unscaled_train, y_unscaled_train, epochs=<span class="number">5</span>, batch_size=<span class="number">128</span>, verbose=<span class="number">1</span>, validation_split=<span class="number">0.1</span>)</span><br><span class="line">unscaled_score = unscaled_model.evaluate(X_unscaled_test, y_unscaled_test, batch_size=<span class="number">128</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Epoch 1/5
+106/106 [==============================] - 1s 4ms/step - loss: 151535.7613 - val_loss: 519.8533
+Epoch 2/5
+106/106 [==============================] - 0s 3ms/step - loss: 2667.9399 - val_loss: 1983.2285
+Epoch 3/5
+106/106 [==============================] - 0s 3ms/step - loss: 2027.2941 - val_loss: 4538.8843
+Epoch 4/5
+106/106 [==============================] - 0s 3ms/step - loss: 1493.0732 - val_loss: 6402.8257
+Epoch 5/5
+106/106 [==============================] - 0s 3ms/step - loss: 1375.7144 - val_loss: 5143.3999
+14/14 [==============================] - 0s 1ms/step - loss: 7.2952</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">predicted = model.predict(X_test)</span><br><span class="line">mse = mean_squared_error(predicted, y_test)</span><br><span class="line"></span><br><span class="line">unscaled_predicted = unscaled_model.predict(X_unscaled_test)</span><br><span class="line">unscaled_mse = mean_squared_error(unscaled_predicted, y_unscaled_test)</span><br><span class="line">print(<span class="string">f&#x27;scaled_mse: <span class="subst">&#123;mse&#125;</span>&#x27;</span>)</span><br><span class="line">print(<span class="string">f&#x27;unscaled_mse: <span class="subst">&#123;unscaled_mse&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>scaled_mse: 0.005182660520511543
+unscaled_mse: 7.295213817608244</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将预测值回退至原始状态所需参数</span></span><br><span class="line">X_unscaled, y_unscaled = split_into_chunks(data=raw_prices, train_size=<span class="number">20</span>, target_size=<span class="number">1</span>, lag_size=<span class="number">1</span>, scale=<span class="literal">False</span>)</span><br><span class="line">X_unscaled, y_unscaled = np.array(X_unscaled), np.array(y_unscaled)</span><br><span class="line">X_unscaled_train, y_unscaled_train, X_unscaled_test, y_unscaled_test = creat_train_test(X=X_unscaled, y=y_unscaled, ratio=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line">params = []</span><br><span class="line"><span class="keyword">for</span> xt <span class="keyword">in</span> X_unscaled_test:</span><br><span class="line">    xt = np.array(xt)</span><br><span class="line">    _mean = xt.mean()</span><br><span class="line">    _std = xt.std()</span><br><span class="line">    params.append(&#123;<span class="string">&#x27;mean&#x27;</span>: _mean, <span class="string">&#x27;std&#x27;</span>: _std&#125;)</span><br><span class="line"></span><br><span class="line">predicted = model.predict(X_test)</span><br><span class="line">unscaled_predicted = get_unscale_data(scale_data=predicted, params=params)</span><br><span class="line">unscaled_y_test = get_unscale_data(scale_data=y_test, params=params)</span><br><span class="line"></span><br><span class="line">mse = mean_squared_error(predicted, y_test)</span><br><span class="line">unscaled_mse = mean_squared_error(unscaled_predicted, unscaled_y_test)</span><br><span class="line">print(<span class="string">f&#x27;scaled_mse: <span class="subst">&#123;mse&#125;</span>&#x27;</span>)</span><br><span class="line">print(<span class="string">f&#x27;unscaled_mse: <span class="subst">&#123;unscaled_mse&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>scaled_mse: 0.0048102971032238035
+unscaled_mse: 0.0008469174193579731</code></pre>
+<h3 id="scale情况">scale情况</h3>
+<p>预测的趋势与真实的趋势大体一致</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scale对比情况</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(y_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.legend.Legend at 0x1782d80d0&gt;</code></pre>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_14_1.png" alt="" /><figcaption>png</figcaption>
+</figure>
+<h3 id="scale再restore情况">scale再restore情况</h3>
+<p>预测值的趋势与真实值的趋势大体一致</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将预测值回退至原始状态所需参数</span></span><br><span class="line">params = []</span><br><span class="line"><span class="keyword">for</span> xt <span class="keyword">in</span> X_unscaled_test:</span><br><span class="line">    xt = np.array(xt)</span><br><span class="line">    _mean = xt.mean()</span><br><span class="line">    _std = xt.std()</span><br><span class="line">    params.append(&#123;<span class="string">&#x27;mean&#x27;</span>: _mean, <span class="string">&#x27;std&#x27;</span>: _std&#125;)</span><br><span class="line"></span><br><span class="line">restored_predicted = get_unscale_data(scale_data=predicted, params=params)</span><br><span class="line">restored_y_test = get_unscale_data(scale_data=y_test, params=params)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scale再restore的对比情况</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(restored_y_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(restored_predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.legend.Legend at 0x178c0eb50&gt;</code></pre>
+<p>​<br />
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_17_1.png" alt="png" /> ​</p>
+<h3 id="unscale序列数据">unscale序列数据</h3>
+<p>能预测到时间序列趋势</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># unscale对比情况</span></span><br><span class="line">print(y_unscaled_test[:<span class="number">10</span>])</span><br><span class="line">print(unscaled_predicted[:<span class="number">10</span>])</span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(y_unscaled_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(unscaled_predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>[47.66     47.950001 48.       47.419998 47.889999 48.25     48.82
+ 48.880001 48.990002 48.      ]
+[[42.88906 ]
+ [42.95131 ]
+ [42.983337]
+ [43.09872 ]
+ [43.178234]
+ [43.196545]
+ [43.18647 ]
+ [43.313953]
+ [43.438004]
+ [43.494946]]
+
+
+
+
+
+&lt;matplotlib.legend.Legend at 0x17560b730&gt;</code></pre>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_19_2.png" alt="" /><figcaption>png</figcaption>
+</figure>
+<h2 id="cnn模型">CNN模型</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_cnn_model</span>():</span></span><br><span class="line">    model = Sequential()</span><br><span class="line">    model.add(Convolution1D(input_shape = (<span class="number">20</span>, <span class="number">1</span>), </span><br><span class="line">                        filters=<span class="number">64</span>,</span><br><span class="line">                        kernel_size=<span class="number">2</span>,</span><br><span class="line">                        padding=<span class="string">&#x27;valid&#x27;</span>,</span><br><span class="line">                        activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">    model.add(MaxPooling1D(pool_size=<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    model.add(Convolution1D(input_shape = (<span class="number">20</span>, <span class="number">1</span>), </span><br><span class="line">                        filters=<span class="number">64</span>,</span><br><span class="line">                        kernel_size=<span class="number">2</span>,</span><br><span class="line">                        padding=<span class="string">&#x27;valid&#x27;</span>,</span><br><span class="line">                        activation=<span class="string">&#x27;relu&#x27;</span>,))</span><br><span class="line">    model.add(MaxPooling1D(pool_size=<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    model.add(Dropout(<span class="number">0.25</span>))</span><br><span class="line">    model.add(Flatten())</span><br><span class="line"></span><br><span class="line">    model.add(Dense(<span class="number">250</span>))</span><br><span class="line">    model.add(Dropout(<span class="number">0.25</span>))</span><br><span class="line">    model.add(Activation(<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line"></span><br><span class="line">    model.add(Dense(<span class="number">1</span>))</span><br><span class="line">    model.add(Activation(<span class="string">&#x27;linear&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 生成训练集、测试集</span></span><br><span class="line">raw_prices, raw_dates = load_snp_close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># scale数据</span></span><br><span class="line">close_dates = [dt.datetime.strptime(_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>).date() <span class="keyword">for</span> _date <span class="keyword">in</span> raw_dates]</span><br><span class="line">X, y = split_into_chunks(data=raw_prices, train_size=<span class="number">20</span>, target_size=<span class="number">1</span>, lag_size=<span class="number">1</span>, scale=<span class="literal">True</span>)</span><br><span class="line">X, y = np.array(X), np.array(y)</span><br><span class="line">X_train, y_train, X_test, y_test = creat_train_test(X=X, y=y, ratio=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># unscale数据</span></span><br><span class="line">X_unscaled, y_unscaled = split_into_chunks(data=raw_prices, train_size=<span class="number">20</span>, target_size=<span class="number">1</span>, lag_size=<span class="number">1</span>, scale=<span class="literal">False</span>)</span><br><span class="line">X_unscaled, y_unscaled = np.array(X_unscaled), np.array(y_unscaled)</span><br><span class="line">X_unscaled_train, y_unscaled_train, X_unscaled_test, y_unscaled_test = creat_train_test(X=X_unscaled, y=y_unscaled, ratio=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape, X_test.shape)</span><br><span class="line">print(X_unscaled_train.shape, X_unscaled_test)</span><br><span class="line"><span class="comment"># 可视化：收盘历史数据走势</span></span><br><span class="line">plt.plot(close_dates, raw_prices)</span><br></pre></td></tr></table></figure>
+<pre><code>(15016, 20) (1669, 20)
+(15016, 20) [[45.75     46.400002 46.580002 ... 46.939999 47.360001 47.57    ]
+ [46.400002 46.580002 46.209999 ... 47.360001 47.57     47.66    ]
+ [46.580002 46.209999 46.240002 ... 47.57     47.66     47.950001]
+ ...
+ [17.23     17.049999 17.049999 ... 17.030001 17.08     16.98    ]
+ [17.049999 17.049999 17.02     ... 17.08     16.98     16.93    ]
+ [17.049999 17.02     16.82     ... 16.98     16.93     16.85    ]]
+
+
+
+
+
+[&lt;matplotlib.lines.Line2D at 0x16f989d90&gt;]</code></pre>
+<p>​<br />
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_22_2.png" alt="png" /> ​</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 扩充一维，以兼容卷积所需输入格式</span></span><br><span class="line">X_train = X_train.reshape(-<span class="number">1</span>, <span class="number">20</span>, <span class="number">1</span>)</span><br><span class="line">X_test = X_test.reshape(-<span class="number">1</span>, <span class="number">20</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">X_unscaled_train = X_unscaled_train.reshape(-<span class="number">1</span>, <span class="number">20</span>, <span class="number">1</span>)</span><br><span class="line">X_unscaled_test = X_unscaled_test.reshape(-<span class="number">1</span>, <span class="number">20</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="使用scale数据训练模型-1">使用scale数据训练模型</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 训练模型: scale data</span></span><br><span class="line">model = build_cnn_model()</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br><span class="line">model.fit(X_train, y_train, epochs=<span class="number">5</span>, batch_size=<span class="number">128</span>, verbose=<span class="number">1</span>, validation_split=<span class="number">0.1</span>)</span><br><span class="line">score = model.evaluate(X_test, y_test, batch_size=<span class="number">128</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Epoch 1/5
+106/106 [==============================] - 1s 7ms/step - loss: 0.8681 - val_loss: 0.3469
+Epoch 2/5
+106/106 [==============================] - 1s 6ms/step - loss: 0.4427 - val_loss: 0.2863
+Epoch 3/5
+106/106 [==============================] - 1s 6ms/step - loss: 0.3861 - val_loss: 0.2434
+Epoch 4/5
+106/106 [==============================] - 1s 5ms/step - loss: 0.3508 - val_loss: 0.2070
+Epoch 5/5
+106/106 [==============================] - 1s 5ms/step - loss: 0.3365 - val_loss: 0.2061
+14/14 [==============================] - 0s 1ms/step - loss: 0.1937</code></pre>
+<h3 id="使用unscale数据训练模型-1">使用unscale数据训练模型</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 训练模型: unscale data</span></span><br><span class="line">unscaled_model = build_cnn_model()</span><br><span class="line">unscaled_model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br><span class="line">unscaled_model.fit(X_unscaled_train, y_unscaled_train, epochs=<span class="number">5</span>, batch_size=<span class="number">128</span>, verbose=<span class="number">1</span>, validation_split=<span class="number">0.1</span>)</span><br><span class="line">unscaled_score = unscaled_model.evaluate(X_unscaled_test, y_unscaled_test, batch_size=<span class="number">128</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Epoch 1/5
+106/106 [==============================] - 1s 6ms/step - loss: 98686.5875 - val_loss: 3660.2197
+Epoch 2/5
+106/106 [==============================] - 1s 5ms/step - loss: 6341.5435 - val_loss: 3308.8596
+Epoch 3/5
+106/106 [==============================] - 1s 5ms/step - loss: 5412.0369 - val_loss: 3537.1943
+Epoch 4/5
+106/106 [==============================] - 1s 5ms/step - loss: 5002.4538 - val_loss: 4037.1299
+Epoch 5/5
+106/106 [==============================] - 1s 6ms/step - loss: 4347.2380 - val_loss: 1436.1592
+14/14 [==============================] - 0s 1ms/step - loss: 0.9359</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">predicted = model.predict(X_test)</span><br><span class="line">mse = mean_squared_error(predicted, y_test)</span><br><span class="line"></span><br><span class="line">unscaled_predicted = unscaled_model.predict(X_unscaled_test)</span><br><span class="line">unscaled_mse = mean_squared_error(unscaled_predicted, y_unscaled_test)</span><br><span class="line">print(<span class="string">f&#x27;scaled_mse: <span class="subst">&#123;mse&#125;</span>&#x27;</span>)</span><br><span class="line">print(<span class="string">f&#x27;unscaled_mse: <span class="subst">&#123;unscaled_mse&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>scaled_mse: 0.1936600538360588
+unscaled_mse: 0.9359378729760282</code></pre>
+<h3 id="scale情况-1">scale情况</h3>
+<p>预测的趋势与真实的趋势大体一致，但相比MLP而言，效果差一些</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scale对比情况</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(y_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.legend.Legend at 0x173d8bac0&gt;</code></pre>
+<p>​<br />
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_30_1.png" alt="png" /> ​</p>
+<h3 id="scale再restore情况-1">scale再restore情况</h3>
+<p>预测的趋势与真实的趋势大体一致，但相比MLP而言，效果差一些</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将预测值回退至原始状态所需参数</span></span><br><span class="line">params = []</span><br><span class="line"><span class="keyword">for</span> xt <span class="keyword">in</span> X_unscaled_test:</span><br><span class="line">    xt = np.array(xt)</span><br><span class="line">    _mean = xt.mean()</span><br><span class="line">    _std = xt.std()</span><br><span class="line">    params.append(&#123;<span class="string">&#x27;mean&#x27;</span>: _mean, <span class="string">&#x27;std&#x27;</span>: _std&#125;)</span><br><span class="line"></span><br><span class="line">restored_predicted = get_unscale_data(scale_data=predicted, params=params)</span><br><span class="line">restored_y_test = get_unscale_data(scale_data=y_test, params=params)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scale再restore的对比情况</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(restored_y_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(restored_predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.legend.Legend at 0x176379dc0&gt;</code></pre>
+<p>​<br />
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_33_1.png" alt="png" /> ​</p>
+<h3 id="unscale序列数据-1">unscale序列数据</h3>
+<p>勉强能能预测到时间序列趋势</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># unscale对比情况</span></span><br><span class="line">print(y_unscaled_test[:<span class="number">10</span>])</span><br><span class="line">print(unscaled_predicted[:<span class="number">10</span>])</span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(y_unscaled_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(unscaled_predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>[47.66     47.950001 48.       47.419998 47.889999 48.25     48.82
+ 48.880001 48.990002 48.      ]
+[[45.627132]
+ [45.659946]
+ [45.737083]
+ [45.769566]
+ [45.82439 ]
+ [45.885178]
+ [45.96586 ]
+ [45.99734 ]
+ [46.0915  ]
+ [46.151127]]
+
+
+
+
+
+&lt;matplotlib.legend.Legend at 0x174dd48b0&gt;</code></pre>
+<p>​<br />
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_35_2.png" alt="png" /> ​</p>
+<h2 id="rnn模型">RNN模型</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_rnn_model</span>():</span></span><br><span class="line">    model = Sequential()</span><br><span class="line">    model.add(LSTM(units=<span class="number">20</span>, return_sequences=<span class="literal">True</span>))</span><br><span class="line">    model.add(LSTM(units=<span class="number">20</span>, return_sequences=<span class="literal">False</span>))</span><br><span class="line">    model.add(Dense(<span class="number">1</span>))</span><br><span class="line">    model.add(Activation(<span class="string">&#x27;linear&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 生成训练集、测试集</span></span><br><span class="line">raw_prices, raw_dates = load_snp_close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># scale数据</span></span><br><span class="line">close_dates = [dt.datetime.strptime(_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>).date() <span class="keyword">for</span> _date <span class="keyword">in</span> raw_dates]</span><br><span class="line">X, y = split_into_chunks(data=raw_prices, train_size=<span class="number">20</span>, target_size=<span class="number">1</span>, lag_size=<span class="number">1</span>, scale=<span class="literal">True</span>)</span><br><span class="line">X, y = np.array(X), np.array(y)</span><br><span class="line">X_train, y_train, X_test, y_test = creat_train_test(X=X, y=y, ratio=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># unscale数据</span></span><br><span class="line">X_unscaled, y_unscaled = split_into_chunks(data=raw_prices, train_size=<span class="number">20</span>, target_size=<span class="number">1</span>, lag_size=<span class="number">1</span>, scale=<span class="literal">False</span>)</span><br><span class="line">X_unscaled, y_unscaled = np.array(X_unscaled), np.array(y_unscaled)</span><br><span class="line">X_unscaled_train, y_unscaled_train, X_unscaled_test, y_unscaled_test = creat_train_test(X=X_unscaled, y=y_unscaled, ratio=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line">print(X_train.shape, X_test.shape)</span><br><span class="line">print(X_unscaled_train.shape, X_unscaled_test)</span><br><span class="line"><span class="comment"># 可视化：收盘历史数据走势</span></span><br><span class="line">plt.plot(close_dates, raw_prices)</span><br></pre></td></tr></table></figure>
+<pre><code>(15016, 20) (1669, 20)
+(15016, 20) [[45.75     46.400002 46.580002 ... 46.939999 47.360001 47.57    ]
+ [46.400002 46.580002 46.209999 ... 47.360001 47.57     47.66    ]
+ [46.580002 46.209999 46.240002 ... 47.57     47.66     47.950001]
+ ...
+ [17.23     17.049999 17.049999 ... 17.030001 17.08     16.98    ]
+ [17.049999 17.049999 17.02     ... 17.08     16.98     16.93    ]
+ [17.049999 17.02     16.82     ... 16.98     16.93     16.85    ]]
+
+
+
+
+
+[&lt;matplotlib.lines.Line2D at 0x174e04fd0&gt;]</code></pre>
+<p>​<br />
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_38_2.png" alt="png" /> ​</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 扩充一维，以兼容LSTM所需输入格式</span></span><br><span class="line">X_train = X_train.reshape(-<span class="number">1</span>, <span class="number">20</span>, <span class="number">1</span>)</span><br><span class="line">X_test = X_test.reshape(-<span class="number">1</span>, <span class="number">20</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">X_unscaled_train = X_unscaled_train.reshape(-<span class="number">1</span>, <span class="number">20</span>, <span class="number">1</span>)</span><br><span class="line">X_unscaled_test = X_unscaled_test.reshape(-<span class="number">1</span>, <span class="number">20</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="使用scale数据训练模型-2">使用scale数据训练模型</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 训练模型: scale data</span></span><br><span class="line">model = build_rnn_model()</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br><span class="line">model.fit(X_train, y_train, epochs=<span class="number">5</span>, batch_size=<span class="number">128</span>, verbose=<span class="number">1</span>, validation_split=<span class="number">0.1</span>)</span><br><span class="line">score = model.evaluate(X_test, y_test, batch_size=<span class="number">128</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Epoch 1/5
+106/106 [==============================] - 7s 30ms/step - loss: 1.2087 - val_loss: 0.4129
+Epoch 2/5
+106/106 [==============================] - 3s 25ms/step - loss: 0.3569 - val_loss: 0.2120
+Epoch 3/5
+106/106 [==============================] - 3s 27ms/step - loss: 0.1667 - val_loss: 0.1056
+Epoch 4/5
+106/106 [==============================] - 3s 24ms/step - loss: 0.0890 - val_loss: 0.0558
+Epoch 5/5
+106/106 [==============================] - 3s 28ms/step - loss: 0.0510 - val_loss: 0.0371
+14/14 [==============================] - 0s 5ms/step - loss: 0.0342</code></pre>
+<h3 id="使用unscale数据训练模型-2">使用unscale数据训练模型</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 训练模型: unscale data</span></span><br><span class="line">unscaled_model = build_rnn_model()</span><br><span class="line">unscaled_model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br><span class="line">unscaled_model.fit(X_unscaled_train, y_unscaled_train, epochs=<span class="number">5</span>, batch_size=<span class="number">128</span>, verbose=<span class="number">1</span>, validation_split=<span class="number">0.1</span>)</span><br><span class="line">unscaled_score = unscaled_model.evaluate(X_unscaled_test, y_unscaled_test, batch_size=<span class="number">128</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Epoch 1/5
+106/106 [==============================] - 7s 30ms/step - loss: 626054.7342 - val_loss: 572991.5000
+Epoch 2/5
+106/106 [==============================] - 3s 26ms/step - loss: 619319.8989 - val_loss: 570086.3125
+Epoch 3/5
+106/106 [==============================] - 3s 27ms/step - loss: 619603.1402 - val_loss: 567595.8750
+Epoch 4/5
+106/106 [==============================] - 3s 26ms/step - loss: 604186.8148 - val_loss: 565218.6875
+Epoch 5/5
+106/106 [==============================] - 3s 27ms/step - loss: 609719.9375 - val_loss: 562911.6250
+14/14 [==============================] - 0s 5ms/step - loss: 197.7686</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">predicted = model.predict(X_test)</span><br><span class="line">mse = mean_squared_error(predicted, y_test)</span><br><span class="line"></span><br><span class="line">unscaled_predicted = unscaled_model.predict(X_unscaled_test)</span><br><span class="line">unscaled_mse = mean_squared_error(unscaled_predicted, y_unscaled_test)</span><br><span class="line">print(<span class="string">f&#x27;scaled_mse: <span class="subst">&#123;mse&#125;</span>&#x27;</span>)</span><br><span class="line">print(<span class="string">f&#x27;unscaled_mse: <span class="subst">&#123;unscaled_mse&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>scaled_mse: 0.03419470081658696
+unscaled_mse: 197.76863195318433</code></pre>
+<h3 id="scale情况-2">scale情况</h3>
+<p>预测的趋势与真实的趋势大体一致，但相比MLP而言，效果差一些</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scale对比情况</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(y_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.legend.Legend at 0x17e66ed90&gt;</code></pre>
+<p>​<br />
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_46_1.png" alt="png" /> ​</p>
+<h3 id="scale再restore情况-2">scale再restore情况</h3>
+<p>预测的趋势与真实的趋势大体一致，但相比MLP而言，效果差一些</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将预测值回退至原始状态所需参数</span></span><br><span class="line">params = []</span><br><span class="line"><span class="keyword">for</span> xt <span class="keyword">in</span> X_unscaled_test:</span><br><span class="line">    xt = np.array(xt)</span><br><span class="line">    _mean = xt.mean()</span><br><span class="line">    _std = xt.std()</span><br><span class="line">    params.append(&#123;<span class="string">&#x27;mean&#x27;</span>: _mean, <span class="string">&#x27;std&#x27;</span>: _std&#125;)</span><br><span class="line"></span><br><span class="line">restored_predicted = get_unscale_data(scale_data=predicted, params=params)</span><br><span class="line">restored_y_test = get_unscale_data(scale_data=y_test, params=params)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># scale再restore的对比情况</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(restored_y_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(restored_predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.legend.Legend at 0x17ae2f130&gt;</code></pre>
+<p>​<br />
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_49_1.png" alt="png" /> ​</p>
+<h3 id="unscale序列数据-2">unscale序列数据</h3>
+<p>完全不能预测到时间序列趋势</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># unscale对比情况</span></span><br><span class="line">print(y_unscaled_test[:<span class="number">10</span>])</span><br><span class="line">print(unscaled_predicted[:<span class="number">10</span>])</span><br><span class="line">fig = plt.figure(figsize=(<span class="number">12</span>, <span class="number">7</span>))</span><br><span class="line">plt.plot(y_unscaled_test[:<span class="number">150</span>], color=<span class="string">&#x27;blue&#x27;</span>)      <span class="comment"># BLUE - test true</span></span><br><span class="line">plt.plot(unscaled_predicted[:<span class="number">150</span>], color=<span class="string">&#x27;red&#x27;</span>)    <span class="comment"># RED - test prediction</span></span><br><span class="line">plt.legend([<span class="string">&#x27;test true&#x27;</span>, <span class="string">&#x27;test predict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>[47.66     47.950001 48.       47.419998 47.889999 48.25     48.82
+ 48.880001 48.990002 48.      ]
+[[18.078972]
+ [18.078972]
+ [18.078972]
+ [18.078972]
+ [18.078972]
+ [18.078972]
+ [18.078972]
+ [18.078972]
+ [18.078972]
+ [18.078972]]
+
+
+
+
+
+&lt;matplotlib.legend.Legend at 0x17b50c490&gt;</code></pre>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/Note-Hub/ImageBed@main/img/output_51_2.png" alt="" /><figcaption>png</figcaption>
+</figure>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>时间序列分析</tag>
+      </tags>
+  </entry>
+</search>
